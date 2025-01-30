@@ -16,27 +16,20 @@ void setup()
 {
   Serial.begin(9600);  // Start serial port
   Wire.begin();
-  Serial.print("hw ");
 }
 
 void loop()
 {
-  Serial.print("hw1 ");
 
   Wire.beginTransmission(CMPS12_ADDRESS);  //starts communication with CMPS12
-  Serial.print("hw2 ");
   Wire.write(ANGLE_8);                     //Sends the register we wish to start reading from
-  Serial.print("hw3 ");
   Wire.endTransmission();
-  Serial.print("hw4 ");
   // Request 5 bytes from the CMPS12
   // this will give us the 8 bit bearing, 
   // both bytes of the 16 bit bearing, pitch and roll
   Wire.requestFrom(CMPS12_ADDRESS, 5);  
-  Serial.print("hw5 ");     
   
   while(Wire.available() < 5);        // Wait for all bytes to come back
-  Serial.print("while o");
   angle8 = Wire.read();               // Read back the 5 bytes
   high_byte = Wire.read();
   low_byte = Wire.read();
