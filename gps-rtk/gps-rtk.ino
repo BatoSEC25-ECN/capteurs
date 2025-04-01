@@ -150,5 +150,30 @@ void loop()
 
     Serial.print(", Accuracy (m): ");
     Serial.println(f_accuracy, 4); // Print the accuracy with 4 decimal places
+
+        uint8_t fixType = myGPS.getFixType();
+    uint8_t carrierSolution = myGPS.getCarrierSolutionType();
+
+    Serial.print("Fix Type: ");
+    switch (fixType)
+    {
+      case 0: Serial.print("No Fix"); break;
+      case 1: Serial.print("Dead Reckoning"); break;
+      case 2: Serial.print("2D Fix"); break;
+      case 3: Serial.print("3D Fix"); break;
+      case 4: Serial.print("GNSS + Dead Reckoning"); break;
+      case 5: Serial.print("Time Only"); break;
+      default: Serial.print("Unknown"); break;
+    }
+
+    Serial.print(", RTK Status: ");
+    switch (carrierSolution)
+    {
+      case 0: Serial.println("No RTK"); break;
+      case 1: Serial.println("RTK Float"); break;
+      case 2: Serial.println("RTK Fixed"); break;
+      default: Serial.println("Unknown"); break;
+    }
+
   }
 }
