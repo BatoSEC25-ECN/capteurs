@@ -20,6 +20,7 @@
 
 #include <Wire.h>
 
+
 // Register Function
 // 0        Command register (write) / Software version (read)
 
@@ -45,6 +46,7 @@
 
   //Address of the CMPS12 compass on i2C
   #define _i2cAddress 0x60
+  #define CALIBRATION_STATUS_REG 0x1E  // Registre du statut de calibration
 
   #define CONTROL_Register 0
 
@@ -78,15 +80,12 @@
   char _pitch;
   char _roll;
 
-  float accelx = 0;
-  float accely = 0;
-  float accelz = 0;
+  float g_acceleration_x_bateau = 0;
+  float g_acceleration_y_bateau = 0;
+  float g_acceleration_z_bateau = 0;
   float _accelScale = 1.0f/100.f; // 1 m/s^2 = 100 LSB
 
-  float gyrox = 0;
-  float gyroy = 0;
-  float gyroz = 0;
-  float _gyroScale = 1.0f/16.f; // 1 Dps = 16 LSB
+  bool calibrationOk = false;
 
 //---------------------------------
     
@@ -95,58 +94,92 @@ void setup() {
   // Initialize the serial port to the User
   // Set this up early in the code, so the User sees all messages
   Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
 
   // Initialize i2c network
   Wire.begin();
+
+  calibrationOk = false;
+
 }
 
 void loop() {
+
+  // Vérifier le statut de calibration au démarrage
+  //Serial.println(calibrationOk);
+  while(!calibrationOk)
+  {
+      Serial.print("calibration en cours...");
+      calibrationOk = calibration();
+  }
+
+  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(500);                      // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+  delay(500);
   
   // read the compass
   
-  int bearing = getBearing();
+  int g_cap_actuel_bateau = getBearing();
 
-  signed char pitch = getPitch();
+  signed char g_gite_bateau = getPitch();
 
   signed char roll = getRoll();
 
   // Read the accelerator
-  accelx = getAcceleroX() * _accelScale;
-  accely = getAcceleroY() * _accelScale;
-  accelz = getAcceleroZ() * _accelScale;
-
-  // Read the compass gyro
-  gyrox = getGyroX() * _gyroScale;
-  gyroy = getGyroY() * _gyroScale;
-  gyroz = getGyroZ() * _gyroScale;
+  g_acceleration_x_bateau = getAcceleroX() * _accelScale;
+  g_acceleration_y_bateau = getAcceleroY() * _accelScale;
+  g_acceleration_z_bateau = getAcceleroZ() * _accelScale;
 
   // Print data to Serial Monitor window
   
   Serial.print("$CMP, relèvement :");
-  Serial.print(bearing);
+  Serial.println(g_cap_actuel_bateau);
   Serial.print(" , tangage: ");
-  Serial.print(pitch); 
+  Serial.print(g_gite_bateau); 
   Serial.print(" , roulis :");
   Serial.print(roll);
   Serial.print(" degree,");
   
   Serial.print("\t$ACC, x :");
-  Serial.print(accelx,4);
+  Serial.print(g_acceleration_x_bateau,4);
   Serial.print(" , y :");
-  Serial.print(accely,4); 
+  Serial.print(g_acceleration_y_bateau,4); 
   Serial.print(" , z :");
-  Serial.print(accelz,4);
+  Serial.print(g_acceleration_z_bateau,4);
   Serial.print(" m/s^2,");
 
-  Serial.print("\t$GYR, x :");
-  Serial.print(gyrox,4);
-  Serial.print(" , y :");
-  Serial.print(gyroy,4); 
-  Serial.print(" , z:");
-  Serial.print(gyroz,4);
-  Serial.println(" degree/s");
-
   delay(100);
+}
+
+bool calibration()
+{
+    Wire.beginTransmission(_i2cAddress);
+    Wire.write(CALIBRATION_STATUS_REG);
+    Wire.endTransmission();
+    bool calibration_ok = false;
+
+    Wire.requestFrom(_i2cAddress, 1);
+    if (Wire.available()) {
+        uint8_t status = Wire.read();
+        Serial.print("Statut de calibration : 0x");
+        Serial.println(status, HEX);
+
+        if (status == 0xFF) {
+            Serial.println("Calibration réussie !");
+            calibration_ok = true;
+        } else if (status == 0x00) {
+            Serial.println("Calibration incomplète, veuillez recalibrer.");
+        } else {
+            Serial.println("Calibration partielle. Faites tourner le capteur dans toutes les directions.");
+        }
+    } else {
+        Serial.println("Impossible de lire le statut de calibration.");
+    }
+
+    delay(5000);
+
+    return calibration_ok;
 }
 
 int16_t getBearing()
@@ -231,89 +264,6 @@ byte getRoll()
   return _roll ;
 }
 
-int16_t getGyroX()
-{
-  // Begin communication with CMPS12
-  Wire.beginTransmission(_i2cAddress);
-
-  // Tell register you want some data
-  Wire.write(_Register_GYRO_X);
-
-  // End the transmission
-  int nackCatcher = Wire.endTransmission();
-
-  // Return if we have a connection problem 
-  if(nackCatcher != 0){return 0;}
-  
-  // Request 2 bytes from CMPS12
-  nReceived = Wire.requestFrom(_i2cAddress , TWO_BYTES);
-
-  // Something has gone wrong
-  if (nReceived != TWO_BYTES) return 0;
-
-  // Read the values
-  _byteHigh = Wire.read(); 
-  _byteLow = Wire.read();
-
-  // Calculate GryoX
-  return ((_byteHigh<<8) + _byteLow);
-}
-
-int16_t getGyroY()
-{
-  // Begin communication with CMPS12
-  Wire.beginTransmission(_i2cAddress);
-
-  // Tell register you want some data
-  Wire.write(_Register_GYRO_Y);
-
-  // End the transmission
-  int nackCatcher = Wire.endTransmission();
-
-  // Return if we have a connection problem 
-  if(nackCatcher != 0){return 0;}
-  
-  // Request 2 bytes from CMPS12
-  nReceived = Wire.requestFrom(_i2cAddress , TWO_BYTES);
-
-  // Something has gone wrong
-  if (nReceived != TWO_BYTES) return 0;
-
-  // Read the values
-  _byteHigh = Wire.read(); 
-  _byteLow = Wire.read();
-
-  // Calculate GryoY
-  return ((_byteHigh<<8) + _byteLow);
-}
-
-int16_t getGyroZ()
-{
-  // Begin communication with CMPS12
-  Wire.beginTransmission(_i2cAddress);
-
-  // Tell register you want some data
-  Wire.write(_Register_GYRO_Z);
-
-  // End the transmission
-  int nackCatcher = Wire.endTransmission();
-
-  // Return if we have a connection problem 
-  if(nackCatcher != 0){return 0;}
-  
-  // Request 2 bytes from CMPS12
-  nReceived = Wire.requestFrom(_i2cAddress , TWO_BYTES);
-
-  // Something has gone wrong
-  if (nReceived != TWO_BYTES) return 0;
-
-  // Read the values
-  _byteHigh = Wire.read(); 
-  _byteLow = Wire.read();
-
-  // Calculate GryoZ
-  return ((_byteHigh<<8) + _byteLow);
-}
 
 int16_t getAcceleroX()
 {
@@ -550,4 +500,34 @@ void changeAddress(byte i2cAddress, byte newi2cAddress)
   // Return if we have a connection problem 
   if(nackCatcher != 0){return;}
 
+}
+
+bool checkCalibrationStatus() {
+
+    bool check_calibration_status = false;
+    Wire.beginTransmission(_i2cAddress);
+    Wire.write(CALIBRATION_STATUS_REG);
+    Wire.endTransmission();
+
+    Wire.requestFrom(_i2cAddress, 1);
+    if (Wire.available()) {
+        uint8_t status = Wire.read();
+        Serial.print("Statut de calibration : 0x");
+        Serial.println(status, HEX);
+
+        if (status == 0xFF) {
+            Serial.println("Calibration réussie !");
+            check_calibration_status = true;
+        } else if (status == 0x00) {
+            Serial.println("Calibration incomplète, veuillez recalibrer.");
+        } else {
+            Serial.println("Calibration partielle. Faites tourner le capteur dans toutes les directions.");
+        }
+    } else {
+        Serial.println("Impossible de lire le statut de calibration.");
+    }
+
+    delay(10000);
+
+    return check_calibration_status;
 }
