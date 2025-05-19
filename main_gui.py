@@ -9,6 +9,7 @@ import threading
 import tkinter as tk
 from tkinter import ttk, messagebox
 import serial.tools.list_ports
+import time 
 
 from ntrip_client import NtripClient
 from serial_sender import SerialSender
@@ -48,6 +49,7 @@ class RTCMForwarderApp:
         """
         @brief Crée les widgets de l'interface graphique.
         """
+
         frame = ttk.Frame(self.root, padding=10)
         frame.grid(row=0, column=0, sticky="nsew")
 
@@ -80,6 +82,9 @@ class RTCMForwarderApp:
         ttk.Label(frame, text="Serial Monitor / Logs:").grid(row=8, column=0, columnspan=2)
         self.log_box = ScrolledText(frame, width=60, height=10, state="disabled")
         self.log_box.grid(row=9, column=0, columnspan=2, pady=5)
+        ttk.Label(frame, text="Fréquence d'envoi (Hz):").grid(row=5, column=0, sticky="e")
+        self.freq_var = tk.StringVar(value="1.0")
+        ttk.Entry(frame, textvariable=self.freq_var).grid(row=5, column=1)
 
 
     def refresh_serial_ports(self):
@@ -100,6 +105,13 @@ class RTCMForwarderApp:
             return
 
         try:
+            freq = float(self.freq_var.get())
+            if freq <= 0:
+                raise ValueError
+        except ValueError:
+            messagebox.showerror("Erreur", "La fréquence doit être un nombre positif.")
+            return
+        try:
             self.serial_sender = SerialSender(self.serial_port_var.get())
             self.serial_sender.open()
 
@@ -111,14 +123,20 @@ class RTCMForwarderApp:
             #     password=self.password_var.get(),
             #     callback=self.serial_sender.send
             # )
-            def process_data(data):
-                self.serial_sender.send(data)
-                hex_str = " ".join(f"{b:02X}" for b in data)
-                self.log(f"[RAW] {hex_str}")
+            self._last_send_time = 0  # Initialise le timer
 
-                types = detect_rtcm_message_type(data)
-                for t in types:
-                    self.log(f"[RTCM] Type {t} détecté")
+            def process_data(data):
+                now = time.time()
+                if now - self._last_send_time >= 1.0 / freq:
+                    self._last_send_time = now
+                    self.serial_sender.send(data)
+                    hex_str = " ".join(f"{b:02X}" for b in data)
+                    self.log(f"[RAW] {hex_str}")
+
+                    types = detect_rtcm_message_type(data)
+                    for t in types:
+                        self.log(f"[RTCM] Type {t} détecté")
+
 
             self.ntrip_client = NtripClient(
                 server=self.server_var.get(),
