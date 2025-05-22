@@ -1,0 +1,1737 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IMU Bateau Autonome: Référence du fichier imu.ino</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IMU Bateau Autonome<span id="projectnumber">&#160;v1.0</span>
+   </div>
+   <div id="projectbrief">Lecture du cap et du roulis via le capteur CMPS12</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('imu_8ino.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier imu.ino</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Lecture du cap (heading) et du roulis (roll) via le capteur CMPS12 en I2C.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;Wire.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de imu.ino:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="imu_8ino__incl.svg" width="75" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="imu_8ino_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:acf85bcce091c4dd8ba11f8b67b8edff0" id="r_acf85bcce091c4dd8ba11f8b67b8edff0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>&#160;&#160;&#160;0x60</td></tr>
+<tr class="memdesc:acf85bcce091c4dd8ba11f8b67b8edff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adresse I2C du capteur CMPS12.  <br /></td></tr>
+<tr class="separator:acf85bcce091c4dd8ba11f8b67b8edff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefed5acd0aebdd29b21fa80147df9179" id="r_aefed5acd0aebdd29b21fa80147df9179"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefed5acd0aebdd29b21fa80147df9179">CALIBRATION_STATUS_REG</a>&#160;&#160;&#160;0x1E</td></tr>
+<tr class="memdesc:aefed5acd0aebdd29b21fa80147df9179"><td class="mdescLeft">&#160;</td><td class="mdescRight">registre du statut de calibration  <br /></td></tr>
+<tr class="separator:aefed5acd0aebdd29b21fa80147df9179"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41a3c798d49ecc54597d1338ad6c95fc" id="r_a41a3c798d49ecc54597d1338ad6c95fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41a3c798d49ecc54597d1338ad6c95fc">CONTROL_Register</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a41a3c798d49ecc54597d1338ad6c95fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de contrôle du capteur (lecture/commande)  <br /></td></tr>
+<tr class="separator:a41a3c798d49ecc54597d1338ad6c95fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ac0df227eecadaf2294e3ccd6316e6b" id="r_a8ac0df227eecadaf2294e3ccd6316e6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ac0df227eecadaf2294e3ccd6316e6b">BEARING_Register</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a8ac0df227eecadaf2294e3ccd6316e6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de poids fort de l’angle de cap (2 octets)  <br /></td></tr>
+<tr class="separator:a8ac0df227eecadaf2294e3ccd6316e6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b24bb5a7a1d4cbc1ce8b17f0681eb3c" id="r_a7b24bb5a7a1d4cbc1ce8b17f0681eb3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b24bb5a7a1d4cbc1ce8b17f0681eb3c">PITCH_Register</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:a7b24bb5a7a1d4cbc1ce8b17f0681eb3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre contenant le tangage (pitch), en degrés signés (-90 à +90)  <br /></td></tr>
+<tr class="separator:a7b24bb5a7a1d4cbc1ce8b17f0681eb3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1878200a9eaa208c210b5d2c2e48bd49" id="r_a1878200a9eaa208c210b5d2c2e48bd49"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1878200a9eaa208c210b5d2c2e48bd49">ROLL_Register</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memdesc:a1878200a9eaa208c210b5d2c2e48bd49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre contenant le roulis (roll), en degrés signés (-90 à +90)  <br /></td></tr>
+<tr class="separator:a1878200a9eaa208c210b5d2c2e48bd49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9389989476f3c6ac05b144a80489f80" id="r_ad9389989476f3c6ac05b144a80489f80"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9389989476f3c6ac05b144a80489f80">MAGNET_X_Register</a>&#160;&#160;&#160;6</td></tr>
+<tr class="memdesc:ad9389989476f3c6ac05b144a80489f80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de l’axe X du magnétomètre (2 octets)  <br /></td></tr>
+<tr class="separator:ad9389989476f3c6ac05b144a80489f80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a3ec01aba58fd69a365c81ac27a4ff" id="r_a13a3ec01aba58fd69a365c81ac27a4ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13a3ec01aba58fd69a365c81ac27a4ff">MAGNET_Y_Register</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memdesc:a13a3ec01aba58fd69a365c81ac27a4ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de l’axe Y du magnétomètre (2 octets)  <br /></td></tr>
+<tr class="separator:a13a3ec01aba58fd69a365c81ac27a4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac66ce30c2e02525aa377ddb582340df7" id="r_ac66ce30c2e02525aa377ddb582340df7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac66ce30c2e02525aa377ddb582340df7">MAGNET_Z_Register</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:ac66ce30c2e02525aa377ddb582340df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de l’axe Z du magnétomètre (2 octets)  <br /></td></tr>
+<tr class="separator:ac66ce30c2e02525aa377ddb582340df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aace96dadf1e259f9e1107a08bdbb3968" id="r_aace96dadf1e259f9e1107a08bdbb3968"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aace96dadf1e259f9e1107a08bdbb3968">ACCELERO_X_Register</a>&#160;&#160;&#160;12</td></tr>
+<tr class="memdesc:aace96dadf1e259f9e1107a08bdbb3968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de l’axe X de l’accéléromètre (2 octets)  <br /></td></tr>
+<tr class="separator:aace96dadf1e259f9e1107a08bdbb3968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad13065fe4802e7f3e00c026909674342" id="r_ad13065fe4802e7f3e00c026909674342"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad13065fe4802e7f3e00c026909674342">ACCELERO_Y_Register</a>&#160;&#160;&#160;14</td></tr>
+<tr class="memdesc:ad13065fe4802e7f3e00c026909674342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de l’axe Y de l’accéléromètre (2 octets)  <br /></td></tr>
+<tr class="separator:ad13065fe4802e7f3e00c026909674342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25184aa52f0472a2c0ed75e42cbbc4fd" id="r_a25184aa52f0472a2c0ed75e42cbbc4fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25184aa52f0472a2c0ed75e42cbbc4fd">ACCELERO_Z_Register</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:a25184aa52f0472a2c0ed75e42cbbc4fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de l’axe XZde l’accéléromètre (2 octets)  <br /></td></tr>
+<tr class="separator:a25184aa52f0472a2c0ed75e42cbbc4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd6c238e3507da0b131e3816debd165f" id="r_acd6c238e3507da0b131e3816debd165f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd6c238e3507da0b131e3816debd165f">_Register_GYRO_X</a>&#160;&#160;&#160;18</td></tr>
+<tr class="memdesc:acd6c238e3507da0b131e3816debd165f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de l’axe X du gyroscope (2 octets)  <br /></td></tr>
+<tr class="separator:acd6c238e3507da0b131e3816debd165f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2acc3af25089cfbae3f7814d5836a64" id="r_ae2acc3af25089cfbae3f7814d5836a64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2acc3af25089cfbae3f7814d5836a64">_Register_GYRO_Y</a>&#160;&#160;&#160;20</td></tr>
+<tr class="memdesc:ae2acc3af25089cfbae3f7814d5836a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de l’axe Y du gyroscope (2 octets)  <br /></td></tr>
+<tr class="separator:ae2acc3af25089cfbae3f7814d5836a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a8ebf6ef481870854e3859aed399306" id="r_a7a8ebf6ef481870854e3859aed399306"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a8ebf6ef481870854e3859aed399306">_Register_GYRO_Z</a>&#160;&#160;&#160;22</td></tr>
+<tr class="memdesc:a7a8ebf6ef481870854e3859aed399306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registre de l’axe Z du gyroscope (2 octets)  <br /></td></tr>
+<tr class="separator:a7a8ebf6ef481870854e3859aed399306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ab60c8c7e1f9fa0d00ea25b917a7e1" id="r_ab6ab60c8c7e1f9fa0d00ea25b917a7e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6ab60c8c7e1f9fa0d00ea25b917a7e1">ONE_BYTE</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:ab6ab60c8c7e1f9fa0d00ea25b917a7e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constante représentant la lecture d’un seul octet.  <br /></td></tr>
+<tr class="separator:ab6ab60c8c7e1f9fa0d00ea25b917a7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab427e6926fcc47eb1c02c1f78162b6f6" id="r_ab427e6926fcc47eb1c02c1f78162b6f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:ab427e6926fcc47eb1c02c1f78162b6f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constante représentant la lecture de deux octets.  <br /></td></tr>
+<tr class="separator:ab427e6926fcc47eb1c02c1f78162b6f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d" id="r_a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
+<tr class="memdesc:a4fc01d736fe50cf5b977f755b675f11d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les interfaces de communication série et I2C.  <br /></td></tr>
+<tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
+<tr class="memdesc:afe461d27b9c48d5921c00d521181f12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boucle principale du programme.  <br /></td></tr>
+<tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c8fb539bbb223156e3904104e2eb4d" id="r_a83c8fb539bbb223156e3904104e2eb4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83c8fb539bbb223156e3904104e2eb4d">isCalibrationOk</a> ()</td></tr>
+<tr class="memdesc:a83c8fb539bbb223156e3904104e2eb4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si la calibration du capteur CMPS12 est terminée avec succès.  <br /></td></tr>
+<tr class="separator:a83c8fb539bbb223156e3904104e2eb4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a633dcef74092fac673ee9fea6cacadbb" id="r_a633dcef74092fac673ee9fea6cacadbb"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a633dcef74092fac673ee9fea6cacadbb">getBearing</a> ()</td></tr>
+<tr class="memdesc:a633dcef74092fac673ee9fea6cacadbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit le cap (heading) du capteur CMPS12.  <br /></td></tr>
+<tr class="separator:a633dcef74092fac673ee9fea6cacadbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01368419dcdb944b1595cec3690b4390" id="r_a01368419dcdb944b1595cec3690b4390"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01368419dcdb944b1595cec3690b4390">getPitch</a> ()</td></tr>
+<tr class="memdesc:a01368419dcdb944b1595cec3690b4390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit l’angle de tangage (pitch) depuis le capteur CMPS12.  <br /></td></tr>
+<tr class="separator:a01368419dcdb944b1595cec3690b4390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a485acf4028301ffe4f9cadf3368ca27a" id="r_a485acf4028301ffe4f9cadf3368ca27a"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a485acf4028301ffe4f9cadf3368ca27a">getRoll</a> ()</td></tr>
+<tr class="memdesc:a485acf4028301ffe4f9cadf3368ca27a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit l’angle de roulis (roll) du capteur CMPS12.  <br /></td></tr>
+<tr class="separator:a485acf4028301ffe4f9cadf3368ca27a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac544176696908ac90ce0e64301a291c" id="r_aac544176696908ac90ce0e64301a291c"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac544176696908ac90ce0e64301a291c">getAcceleroX</a> ()</td></tr>
+<tr class="memdesc:aac544176696908ac90ce0e64301a291c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit la valeur brute de l'accélération sur l'axe X depuis le capteur CMPS12.  <br /></td></tr>
+<tr class="separator:aac544176696908ac90ce0e64301a291c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f9e8d1bf4f730620a632f94048c483a" id="r_a4f9e8d1bf4f730620a632f94048c483a"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f9e8d1bf4f730620a632f94048c483a">getAcceleroY</a> ()</td></tr>
+<tr class="memdesc:a4f9e8d1bf4f730620a632f94048c483a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit la valeur brute de l'accélération sur l'axe Y depuis le capteur CMPS12.  <br /></td></tr>
+<tr class="separator:a4f9e8d1bf4f730620a632f94048c483a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8341338bdffce8d5a7cbdda2098c663c" id="r_a8341338bdffce8d5a7cbdda2098c663c"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8341338bdffce8d5a7cbdda2098c663c">getAcceleroZ</a> ()</td></tr>
+<tr class="memdesc:a8341338bdffce8d5a7cbdda2098c663c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit la valeur brute de l'accélération sur l'axe Z depuis le capteur CMPS12.  <br /></td></tr>
+<tr class="separator:a8341338bdffce8d5a7cbdda2098c663c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1472d49812b8e22ec5ab9eca01780999" id="r_a1472d49812b8e22ec5ab9eca01780999"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1472d49812b8e22ec5ab9eca01780999">getMagnetX</a> ()</td></tr>
+<tr class="memdesc:a1472d49812b8e22ec5ab9eca01780999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit la valeur brute du champ magnétique sur l’axe X depuis le capteur CMPS12.  <br /></td></tr>
+<tr class="separator:a1472d49812b8e22ec5ab9eca01780999"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5df4172a18508e4e021ced035e2aef6" id="r_ae5df4172a18508e4e021ced035e2aef6"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5df4172a18508e4e021ced035e2aef6">getMagnetY</a> ()</td></tr>
+<tr class="memdesc:ae5df4172a18508e4e021ced035e2aef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit la valeur brute du champ magnétique sur l’axe Y depuis le capteur CMPS12.  <br /></td></tr>
+<tr class="separator:ae5df4172a18508e4e021ced035e2aef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6ae97594315980935df02f3f60a7b97" id="r_ad6ae97594315980935df02f3f60a7b97"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6ae97594315980935df02f3f60a7b97">getMagnetZ</a> ()</td></tr>
+<tr class="memdesc:ad6ae97594315980935df02f3f60a7b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit la valeur brute du champ magnétique sur l’axe Z depuis le capteur CMPS12.  <br /></td></tr>
+<tr class="separator:ad6ae97594315980935df02f3f60a7b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a342d068fdcdc9b5decdf0b061fc9bc98" id="r_a342d068fdcdc9b5decdf0b061fc9bc98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a342d068fdcdc9b5decdf0b061fc9bc98">changeAddress</a> (byte i2cAddress, byte newi2cAddress)</td></tr>
+<tr class="memdesc:a342d068fdcdc9b5decdf0b061fc9bc98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change l’adresse I2C du capteur CMPS12.  <br /></td></tr>
+<tr class="separator:a342d068fdcdc9b5decdf0b061fc9bc98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaf56c604ee1d9aac9976e304fadb74e" id="r_afaf56c604ee1d9aac9976e304fadb74e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaf56c604ee1d9aac9976e304fadb74e">checkCalibrationStatus</a> ()</td></tr>
+<tr class="memdesc:afaf56c604ee1d9aac9976e304fadb74e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie l’état de calibration du capteur CMPS12 et affiche un message explicatif.  <br /></td></tr>
+<tr class="separator:afaf56c604ee1d9aac9976e304fadb74e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a91c120f16cf304879a5c8d38d1ab3cca" id="r_a91c120f16cf304879a5c8d38d1ab3cca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91c120f16cf304879a5c8d38d1ab3cca">_bearing</a></td></tr>
+<tr class="memdesc:a91c120f16cf304879a5c8d38d1ab3cca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cap (bearing) brut lu depuis le capteur, en dixièmes de degré (0–3599)  <br /></td></tr>
+<tr class="separator:a91c120f16cf304879a5c8d38d1ab3cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a061270f4e92f9086ca193d5a44e1a524" id="r_a061270f4e92f9086ca193d5a44e1a524"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a></td></tr>
+<tr class="memdesc:a061270f4e92f9086ca193d5a44e1a524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre d’octets reçus lors de la lecture I2C.  <br /></td></tr>
+<tr class="separator:a061270f4e92f9086ca193d5a44e1a524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af41ebb573796ffb56a6511ce053d89f5" id="r_af41ebb573796ffb56a6511ce053d89f5"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af41ebb573796ffb56a6511ce053d89f5">_fine</a></td></tr>
+<tr class="memdesc:af41ebb573796ffb56a6511ce053d89f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur fine de l’angle (précision supplémentaire du cap)  <br /></td></tr>
+<tr class="separator:af41ebb573796ffb56a6511ce053d89f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54d50bad69d20fd3ad9841dd3e7f6c48" id="r_a54d50bad69d20fd3ad9841dd3e7f6c48"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a></td></tr>
+<tr class="memdesc:a54d50bad69d20fd3ad9841dd3e7f6c48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Octet de poids fort d’une valeur sur 16 bits.  <br /></td></tr>
+<tr class="separator:a54d50bad69d20fd3ad9841dd3e7f6c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34e5830fb62769da02778d89e63da261" id="r_a34e5830fb62769da02778d89e63da261"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a></td></tr>
+<tr class="memdesc:a34e5830fb62769da02778d89e63da261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Octet de poids faible d’une valeur sur 16 bits.  <br /></td></tr>
+<tr class="separator:a34e5830fb62769da02778d89e63da261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a660177f3ca1839395481776268a7e7d7" id="r_a660177f3ca1839395481776268a7e7d7"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a660177f3ca1839395481776268a7e7d7">_pitch</a></td></tr>
+<tr class="memdesc:a660177f3ca1839395481776268a7e7d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur du tangage (pitch), exprimée en degrés signés (-90 à +90)  <br /></td></tr>
+<tr class="separator:a660177f3ca1839395481776268a7e7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7abf44986398977320add9c1f08a5f3c" id="r_a7abf44986398977320add9c1f08a5f3c"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7abf44986398977320add9c1f08a5f3c">_roll</a></td></tr>
+<tr class="memdesc:a7abf44986398977320add9c1f08a5f3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur du roulis (roll), exprimée en degrés signés (-90 à +90)  <br /></td></tr>
+<tr class="separator:a7abf44986398977320add9c1f08a5f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacba609411591be29de17c7003311877" id="r_aacba609411591be29de17c7003311877"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacba609411591be29de17c7003311877">g_acceleration_x_bateau</a> = 0</td></tr>
+<tr class="memdesc:aacba609411591be29de17c7003311877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accélération sur l’axe X du bateau, en m/s²  <br /></td></tr>
+<tr class="separator:aacba609411591be29de17c7003311877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43e79b1e6b00d3d58452c6ca31250f90" id="r_a43e79b1e6b00d3d58452c6ca31250f90"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43e79b1e6b00d3d58452c6ca31250f90">g_acceleration_y_bateau</a> = 0</td></tr>
+<tr class="memdesc:a43e79b1e6b00d3d58452c6ca31250f90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accélération sur l’axe Y du bateau, en m/s²  <br /></td></tr>
+<tr class="separator:a43e79b1e6b00d3d58452c6ca31250f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72432cbd71c2e9c8e99908978d1eb474" id="r_a72432cbd71c2e9c8e99908978d1eb474"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72432cbd71c2e9c8e99908978d1eb474">g_acceleration_z_bateau</a> = 0</td></tr>
+<tr class="memdesc:a72432cbd71c2e9c8e99908978d1eb474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accélération sur l’axe Z du bateau, en m/s²  <br /></td></tr>
+<tr class="separator:a72432cbd71c2e9c8e99908978d1eb474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addca3d8fc0e85b82c2ad91b7c48e8607" id="r_addca3d8fc0e85b82c2ad91b7c48e8607"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addca3d8fc0e85b82c2ad91b7c48e8607">_accelScale</a> = 1.0f / 100.f</td></tr>
+<tr class="memdesc:addca3d8fc0e85b82c2ad91b7c48e8607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Échelle de conversion des données brutes en accélération : 1 m/s² = 100 LSB.  <br /></td></tr>
+<tr class="separator:addca3d8fc0e85b82c2ad91b7c48e8607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a475347ca1760bf7296225ad64632147e" id="r_a475347ca1760bf7296225ad64632147e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a475347ca1760bf7296225ad64632147e">calibrationOk</a> = false</td></tr>
+<tr class="memdesc:a475347ca1760bf7296225ad64632147e"><td class="mdescLeft">&#160;</td><td class="mdescRight">État de la calibration du capteur : true si elle est réussie.  <br /></td></tr>
+<tr class="separator:a475347ca1760bf7296225ad64632147e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Lecture du cap (heading) et du roulis (roll) via le capteur CMPS12 en I2C. </p>
+<p>Ce programme interroge un capteur d’orientation CMPS12 connecté en I2C pour obtenir :</p><ul>
+<li>Le cap du bateau (direction vers laquelle il pointe, en degrés par rapport au nord magnétique).</li>
+<li>Le roulis (roll), c’est-à-dire l’inclinaison latérale du bateau.</li>
+</ul>
+<p>Ces informations sont affichées sur le port série pour un usage en navigation embarquée. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+</div><h2 class="groupheader">Documentation des macros</h2>
+<a id="acf85bcce091c4dd8ba11f8b67b8edff0" name="acf85bcce091c4dd8ba11f8b67b8edff0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf85bcce091c4dd8ba11f8b67b8edff0">&#9670;&#160;</a></span>_i2cAddress</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _i2cAddress&#160;&#160;&#160;0x60</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adresse I2C du capteur CMPS12. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00062">62</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00727">checkCalibrationStatus()</a>, <a class="el" href="imu_8ino_source.html#l00382">getAcceleroX()</a>, <a class="el" href="imu_8ino_source.html#l00424">getAcceleroY()</a>, <a class="el" href="imu_8ino_source.html#l00465">getAcceleroZ()</a>, <a class="el" href="imu_8ino_source.html#l00262">getBearing()</a>, <a class="el" href="imu_8ino_source.html#l00509">getMagnetX()</a>, <a class="el" href="imu_8ino_source.html#l00552">getMagnetY()</a>, <a class="el" href="imu_8ino_source.html#l00595">getMagnetZ()</a>, <a class="el" href="imu_8ino_source.html#l00304">getPitch()</a>, <a class="el" href="imu_8ino_source.html#l00343">getRoll()</a>, et <a class="el" href="imu_8ino_source.html#l00239">isCalibrationOk()</a>.</p>
+
+</div>
+</div>
+<a id="acd6c238e3507da0b131e3816debd165f" name="acd6c238e3507da0b131e3816debd165f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd6c238e3507da0b131e3816debd165f">&#9670;&#160;</a></span>_Register_GYRO_X</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _Register_GYRO_X&#160;&#160;&#160;18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de l’axe X du gyroscope (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00097">97</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+</div>
+</div>
+<a id="ae2acc3af25089cfbae3f7814d5836a64" name="ae2acc3af25089cfbae3f7814d5836a64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2acc3af25089cfbae3f7814d5836a64">&#9670;&#160;</a></span>_Register_GYRO_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _Register_GYRO_Y&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de l’axe Y du gyroscope (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00099">99</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+</div>
+</div>
+<a id="a7a8ebf6ef481870854e3859aed399306" name="a7a8ebf6ef481870854e3859aed399306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a8ebf6ef481870854e3859aed399306">&#9670;&#160;</a></span>_Register_GYRO_Z</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _Register_GYRO_Z&#160;&#160;&#160;22</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de l’axe Z du gyroscope (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00101">101</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+</div>
+</div>
+<a id="aace96dadf1e259f9e1107a08bdbb3968" name="aace96dadf1e259f9e1107a08bdbb3968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aace96dadf1e259f9e1107a08bdbb3968">&#9670;&#160;</a></span>ACCELERO_X_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ACCELERO_X_Register&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de l’axe X de l’accéléromètre (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00090">90</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00382">getAcceleroX()</a>.</p>
+
+</div>
+</div>
+<a id="ad13065fe4802e7f3e00c026909674342" name="ad13065fe4802e7f3e00c026909674342"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13065fe4802e7f3e00c026909674342">&#9670;&#160;</a></span>ACCELERO_Y_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ACCELERO_Y_Register&#160;&#160;&#160;14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de l’axe Y de l’accéléromètre (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00092">92</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00424">getAcceleroY()</a>.</p>
+
+</div>
+</div>
+<a id="a25184aa52f0472a2c0ed75e42cbbc4fd" name="a25184aa52f0472a2c0ed75e42cbbc4fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25184aa52f0472a2c0ed75e42cbbc4fd">&#9670;&#160;</a></span>ACCELERO_Z_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ACCELERO_Z_Register&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de l’axe XZde l’accéléromètre (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00094">94</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00465">getAcceleroZ()</a>.</p>
+
+</div>
+</div>
+<a id="a8ac0df227eecadaf2294e3ccd6316e6b" name="a8ac0df227eecadaf2294e3ccd6316e6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ac0df227eecadaf2294e3ccd6316e6b">&#9670;&#160;</a></span>BEARING_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEARING_Register&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de poids fort de l’angle de cap (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00071">71</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00262">getBearing()</a>.</p>
+
+</div>
+</div>
+<a id="aefed5acd0aebdd29b21fa80147df9179" name="aefed5acd0aebdd29b21fa80147df9179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefed5acd0aebdd29b21fa80147df9179">&#9670;&#160;</a></span>CALIBRATION_STATUS_REG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CALIBRATION_STATUS_REG&#160;&#160;&#160;0x1E</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>registre du statut de calibration </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00065">65</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00727">checkCalibrationStatus()</a>, et <a class="el" href="imu_8ino_source.html#l00239">isCalibrationOk()</a>.</p>
+
+</div>
+</div>
+<a id="a41a3c798d49ecc54597d1338ad6c95fc" name="a41a3c798d49ecc54597d1338ad6c95fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41a3c798d49ecc54597d1338ad6c95fc">&#9670;&#160;</a></span>CONTROL_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONTROL_Register&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de contrôle du capteur (lecture/commande) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00068">68</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00642">changeAddress()</a>.</p>
+
+</div>
+</div>
+<a id="ad9389989476f3c6ac05b144a80489f80" name="ad9389989476f3c6ac05b144a80489f80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9389989476f3c6ac05b144a80489f80">&#9670;&#160;</a></span>MAGNET_X_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAGNET_X_Register&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de l’axe X du magnétomètre (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00081">81</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00509">getMagnetX()</a>.</p>
+
+</div>
+</div>
+<a id="a13a3ec01aba58fd69a365c81ac27a4ff" name="a13a3ec01aba58fd69a365c81ac27a4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a3ec01aba58fd69a365c81ac27a4ff">&#9670;&#160;</a></span>MAGNET_Y_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAGNET_Y_Register&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de l’axe Y du magnétomètre (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00084">84</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00552">getMagnetY()</a>.</p>
+
+</div>
+</div>
+<a id="ac66ce30c2e02525aa377ddb582340df7" name="ac66ce30c2e02525aa377ddb582340df7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac66ce30c2e02525aa377ddb582340df7">&#9670;&#160;</a></span>MAGNET_Z_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAGNET_Z_Register&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre de l’axe Z du magnétomètre (2 octets) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00087">87</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00595">getMagnetZ()</a>.</p>
+
+</div>
+</div>
+<a id="ab6ab60c8c7e1f9fa0d00ea25b917a7e1" name="ab6ab60c8c7e1f9fa0d00ea25b917a7e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ab60c8c7e1f9fa0d00ea25b917a7e1">&#9670;&#160;</a></span>ONE_BYTE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ONE_BYTE&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constante représentant la lecture d’un seul octet. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00104">104</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00304">getPitch()</a>, et <a class="el" href="imu_8ino_source.html#l00343">getRoll()</a>.</p>
+
+</div>
+</div>
+<a id="a7b24bb5a7a1d4cbc1ce8b17f0681eb3c" name="a7b24bb5a7a1d4cbc1ce8b17f0681eb3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b24bb5a7a1d4cbc1ce8b17f0681eb3c">&#9670;&#160;</a></span>PITCH_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PITCH_Register&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre contenant le tangage (pitch), en degrés signés (-90 à +90) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00074">74</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00304">getPitch()</a>.</p>
+
+</div>
+</div>
+<a id="a1878200a9eaa208c210b5d2c2e48bd49" name="a1878200a9eaa208c210b5d2c2e48bd49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1878200a9eaa208c210b5d2c2e48bd49">&#9670;&#160;</a></span>ROLL_Register</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ROLL_Register&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registre contenant le roulis (roll), en degrés signés (-90 à +90) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00077">77</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00343">getRoll()</a>.</p>
+
+</div>
+</div>
+<a id="ab427e6926fcc47eb1c02c1f78162b6f6" name="ab427e6926fcc47eb1c02c1f78162b6f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab427e6926fcc47eb1c02c1f78162b6f6">&#9670;&#160;</a></span>TWO_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TWO_BYTES&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constante représentant la lecture de deux octets. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00106">106</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00382">getAcceleroX()</a>, <a class="el" href="imu_8ino_source.html#l00424">getAcceleroY()</a>, <a class="el" href="imu_8ino_source.html#l00465">getAcceleroZ()</a>, <a class="el" href="imu_8ino_source.html#l00262">getBearing()</a>, <a class="el" href="imu_8ino_source.html#l00509">getMagnetX()</a>, <a class="el" href="imu_8ino_source.html#l00552">getMagnetY()</a>, et <a class="el" href="imu_8ino_source.html#l00595">getMagnetZ()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a342d068fdcdc9b5decdf0b061fc9bc98" name="a342d068fdcdc9b5decdf0b061fc9bc98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a342d068fdcdc9b5decdf0b061fc9bc98">&#9670;&#160;</a></span>changeAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changeAddress </td>
+          <td>(</td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>i2cAddress</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte</td>          <td class="paramname"><span class="paramname"><em>newi2cAddress</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change l’adresse I2C du capteur CMPS12. </p>
+<p>Cette fonction envoie une séquence spécifique au capteur CMPS12 via le registre de contrôle pour modifier son adresse I2C.</p>
+<p>⚠️ <b>Important</b> :</p><ul>
+<li>Seul le capteur dont l'adresse doit être changée doit être présent sur le bus I2C.</li>
+<li>La nouvelle adresse doit être une valeur paire (7 bits, se terminant par 0).</li>
+<li>Le changement est <b>persistant</b> (sauvegardé en EEPROM sur le capteur).</li>
+</ul>
+<dl class="section warning"><dt>Avertissement</dt><dd>Cette opération est irréversible sans outils spécifiques si la nouvelle adresse est incorrecte. Utiliser avec précaution.</dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i2cAddress</td><td>Adresse I2C actuelle du capteur (ex: <code>0x60</code>). </td></tr>
+    <tr><td class="paramname">newi2cAddress</td><td>Nouvelle adresse I2C souhaitée (ex: <code>0x64</code>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00642">642</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  643</span>{</div>
+<div class="line"><span class="lineno">  644</span>  <span class="comment">// Reset the address on the i2c network</span></div>
+<div class="line"><span class="lineno">  645</span>  <span class="comment">// Ensure that you have only this module connected on the i2c network</span></div>
+<div class="line"><span class="lineno">  646</span>  <span class="comment">// The 7 bit i2c address must end with a 0. (even numbers please)</span></div>
+<div class="line"><span class="lineno">  647</span>  <span class="comment">// For example changeAddress(0x60, 0x64)</span></div>
+<div class="line"><span class="lineno">  648</span> </div>
+<div class="line"><span class="lineno">  649</span>  <span class="comment">// Address 0x60, 1 long flash, 0 short flashes</span></div>
+<div class="line"><span class="lineno">  650</span>  <span class="comment">// Address 0x62, 1 long flash, 1 short flashes</span></div>
+<div class="line"><span class="lineno">  651</span>  <span class="comment">// Address 0x64, 1 long flash, 2 short flashes</span></div>
+<div class="line"><span class="lineno">  652</span>  <span class="comment">// Address 0x66, 1 long flash, 3 short flashes</span></div>
+<div class="line"><span class="lineno">  653</span>  <span class="comment">// Address 0x68, 1 long flash, 4 short flashes</span></div>
+<div class="line"><span class="lineno">  654</span>  <span class="comment">// Address 0x6A, 1 long flash, 5 short flashes</span></div>
+<div class="line"><span class="lineno">  655</span>  <span class="comment">// Address 0x6C, 1 long flash, 6 short flashes</span></div>
+<div class="line"><span class="lineno">  656</span>  <span class="comment">// Address 0x6E, 1 long flash, 7 short flashes</span></div>
+<div class="line"><span class="lineno">  657</span> </div>
+<div class="line"><span class="lineno">  658</span>  <span class="comment">// Begin communication</span></div>
+<div class="line"><span class="lineno">  659</span>  Wire.beginTransmission(i2cAddress);</div>
+<div class="line"><span class="lineno">  660</span>  Wire.write(<a class="code hl_define" href="#a41a3c798d49ecc54597d1338ad6c95fc">CONTROL_Register</a>);</div>
+<div class="line"><span class="lineno">  661</span>  Wire.write(<span class="keywordtype">byte</span>(0xA0));</div>
+<div class="line"><span class="lineno">  662</span>  </div>
+<div class="line"><span class="lineno">  663</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  664</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  665</span> </div>
+<div class="line"><span class="lineno">  666</span>  <span class="comment">//Wait 100ms</span></div>
+<div class="line"><span class="lineno">  667</span>  delay(100);</div>
+<div class="line"><span class="lineno">  668</span> </div>
+<div class="line"><span class="lineno">  669</span>  <span class="comment">// Begin communication</span></div>
+<div class="line"><span class="lineno">  670</span>  Wire.beginTransmission(i2cAddress);</div>
+<div class="line"><span class="lineno">  671</span>  Wire.write(<a class="code hl_define" href="#a41a3c798d49ecc54597d1338ad6c95fc">CONTROL_Register</a>);</div>
+<div class="line"><span class="lineno">  672</span>  Wire.write(<span class="keywordtype">byte</span>(0xAA));</div>
+<div class="line"><span class="lineno">  673</span> </div>
+<div class="line"><span class="lineno">  674</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  675</span>  nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  676</span> </div>
+<div class="line"><span class="lineno">  677</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  678</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span>;}</div>
+<div class="line"><span class="lineno">  679</span> </div>
+<div class="line"><span class="lineno">  680</span>  <span class="comment">//Wait 100ms</span></div>
+<div class="line"><span class="lineno">  681</span>  delay(100);</div>
+<div class="line"><span class="lineno">  682</span> </div>
+<div class="line"><span class="lineno">  683</span>  <span class="comment">// Begin communication</span></div>
+<div class="line"><span class="lineno">  684</span>  Wire.beginTransmission(i2cAddress);</div>
+<div class="line"><span class="lineno">  685</span>  Wire.write(<a class="code hl_define" href="#a41a3c798d49ecc54597d1338ad6c95fc">CONTROL_Register</a>);</div>
+<div class="line"><span class="lineno">  686</span>  Wire.write(<span class="keywordtype">byte</span>(0xA5));</div>
+<div class="line"><span class="lineno">  687</span> </div>
+<div class="line"><span class="lineno">  688</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  689</span>  nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  690</span> </div>
+<div class="line"><span class="lineno">  691</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  692</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span>;}</div>
+<div class="line"><span class="lineno">  693</span> </div>
+<div class="line"><span class="lineno">  694</span>  <span class="comment">//Wait 100ms</span></div>
+<div class="line"><span class="lineno">  695</span>  delay(100);</div>
+<div class="line"><span class="lineno">  696</span> </div>
+<div class="line"><span class="lineno">  697</span>  <span class="comment">// Begin communication</span></div>
+<div class="line"><span class="lineno">  698</span>  Wire.beginTransmission(i2cAddress);</div>
+<div class="line"><span class="lineno">  699</span>  Wire.write(<a class="code hl_define" href="#a41a3c798d49ecc54597d1338ad6c95fc">CONTROL_Register</a>);</div>
+<div class="line"><span class="lineno">  700</span>  Wire.write(newi2cAddress);</div>
+<div class="line"><span class="lineno">  701</span> </div>
+<div class="line"><span class="lineno">  702</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  703</span>  nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  704</span> </div>
+<div class="line"><span class="lineno">  705</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  706</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span>;}</div>
+<div class="line"><span class="lineno">  707</span> </div>
+<div class="line"><span class="lineno">  708</span>}</div>
+<div class="ttc" id="aimu_8ino_html_a41a3c798d49ecc54597d1338ad6c95fc"><div class="ttname"><a href="#a41a3c798d49ecc54597d1338ad6c95fc">CONTROL_Register</a></div><div class="ttdeci">#define CONTROL_Register</div><div class="ttdoc">Registre de contrôle du capteur (lecture/commande)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00068">imu.ino:68</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00068">CONTROL_Register</a>.</p>
+
+</div>
+</div>
+<a id="afaf56c604ee1d9aac9976e304fadb74e" name="afaf56c604ee1d9aac9976e304fadb74e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaf56c604ee1d9aac9976e304fadb74e">&#9670;&#160;</a></span>checkCalibrationStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool checkCalibrationStatus </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie l’état de calibration du capteur CMPS12 et affiche un message explicatif. </p>
+<p>Cette fonction lit le registre de statut de calibration du CMPS12 via I2C et affiche une description du résultat sur le port série :</p><ul>
+<li><code>0xFF</code> : Calibration complète</li>
+<li><code>0x00</code> : Calibration absente</li>
+<li>Autre : Calibration partielle</li>
+</ul>
+<p>Elle attend 10 secondes (<code>delay(10000)</code>) après l'affichage pour laisser le temps à l’utilisateur de lire le message.</p>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction est utile pour l’étape de diagnostic ou de test du capteur.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si la calibration est complète (<code>0xFF</code>), false sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00727">727</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  727</span>                              {</div>
+<div class="line"><span class="lineno">  728</span> </div>
+<div class="line"><span class="lineno">  729</span>    <span class="keywordtype">bool</span> check_calibration_status = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  730</span>    Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  731</span>    Wire.write(<a class="code hl_define" href="#aefed5acd0aebdd29b21fa80147df9179">CALIBRATION_STATUS_REG</a>);</div>
+<div class="line"><span class="lineno">  732</span>    Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  733</span> </div>
+<div class="line"><span class="lineno">  734</span>    Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>, 1);</div>
+<div class="line"><span class="lineno">  735</span>    <span class="keywordflow">if</span> (Wire.available()) {</div>
+<div class="line"><span class="lineno">  736</span>        uint8_t status = Wire.read();</div>
+<div class="line"><span class="lineno">  737</span>        Serial.print(<span class="stringliteral">&quot;Statut de calibration : 0x&quot;</span>);</div>
+<div class="line"><span class="lineno">  738</span>        Serial.println(status, HEX);</div>
+<div class="line"><span class="lineno">  739</span> </div>
+<div class="line"><span class="lineno">  740</span>        <span class="keywordflow">if</span> (status == 0xFF) {</div>
+<div class="line"><span class="lineno">  741</span>            Serial.println(<span class="stringliteral">&quot;Calibration réussie !&quot;</span>);</div>
+<div class="line"><span class="lineno">  742</span>            check_calibration_status = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  743</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (status == 0x00) {</div>
+<div class="line"><span class="lineno">  744</span>            Serial.println(<span class="stringliteral">&quot;Calibration incomplète, veuillez recalibrer.&quot;</span>);</div>
+<div class="line"><span class="lineno">  745</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  746</span>            Serial.println(<span class="stringliteral">&quot;Calibration partielle. Faites tourner le capteur dans toutes les directions.&quot;</span>);</div>
+<div class="line"><span class="lineno">  747</span>        }</div>
+<div class="line"><span class="lineno">  748</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  749</span>        Serial.println(<span class="stringliteral">&quot;Impossible de lire le statut de calibration.&quot;</span>);</div>
+<div class="line"><span class="lineno">  750</span>    }</div>
+<div class="line"><span class="lineno">  751</span> </div>
+<div class="line"><span class="lineno">  752</span>    delay(10000);</div>
+<div class="line"><span class="lineno">  753</span> </div>
+<div class="line"><span class="lineno">  754</span>    <span class="keywordflow">return</span> check_calibration_status;</div>
+<div class="line"><span class="lineno">  755</span>}</div>
+<div class="ttc" id="aimu_8ino_html_acf85bcce091c4dd8ba11f8b67b8edff0"><div class="ttname"><a href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a></div><div class="ttdeci">#define _i2cAddress</div><div class="ttdoc">Adresse I2C du capteur CMPS12.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00062">imu.ino:62</a></div></div>
+<div class="ttc" id="aimu_8ino_html_aefed5acd0aebdd29b21fa80147df9179"><div class="ttname"><a href="#aefed5acd0aebdd29b21fa80147df9179">CALIBRATION_STATUS_REG</a></div><div class="ttdeci">#define CALIBRATION_STATUS_REG</div><div class="ttdoc">registre du statut de calibration</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00065">imu.ino:65</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, et <a class="el" href="imu_8ino_source.html#l00065">CALIBRATION_STATUS_REG</a>.</p>
+
+</div>
+</div>
+<a id="aac544176696908ac90ce0e64301a291c" name="aac544176696908ac90ce0e64301a291c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac544176696908ac90ce0e64301a291c">&#9670;&#160;</a></span>getAcceleroX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t getAcceleroX </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit la valeur brute de l'accélération sur l'axe X depuis le capteur CMPS12. </p>
+<p>Cette fonction interroge le registre de l'accéléromètre X du CMPS12 via I2C, lit deux octets (MSB + LSB) et les combine pour obtenir une valeur signée 16 bits.</p>
+<p>La valeur retournée est brute (en LSB) et peut être convertie en m/s² en utilisant l’échelle <code>_accelScale = 1.0f / 100.f</code>.</p>
+<dl class="section note"><dt>Note</dt><dd>En cas de problème de communication ou de réception incomplète, retourne 0.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int16_t Valeur d'accélération brute sur l’axe X, ou 0 si erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00382">382</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  383</span>{</div>
+<div class="line"><span class="lineno">  384</span>  <span class="comment">// Begin communication with CMPS12</span></div>
+<div class="line"><span class="lineno">  385</span>  Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  386</span> </div>
+<div class="line"><span class="lineno">  387</span>  <span class="comment">// Tell register you want some data</span></div>
+<div class="line"><span class="lineno">  388</span>  Wire.write(<a class="code hl_define" href="#aace96dadf1e259f9e1107a08bdbb3968">ACCELERO_X_Register</a>);</div>
+<div class="line"><span class="lineno">  389</span> </div>
+<div class="line"><span class="lineno">  390</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  391</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  392</span> </div>
+<div class="line"><span class="lineno">  393</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  394</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span> 0;}</div>
+<div class="line"><span class="lineno">  395</span>  </div>
+<div class="line"><span class="lineno">  396</span>  <span class="comment">// Request 2 bytes from CMPS12</span></div>
+<div class="line"><span class="lineno">  397</span>  <a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> = Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a> , <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>);</div>
+<div class="line"><span class="lineno">  398</span> </div>
+<div class="line"><span class="lineno">  399</span>  <span class="comment">// Something has gone wrong</span></div>
+<div class="line"><span class="lineno">  400</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> != <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  401</span> </div>
+<div class="line"><span class="lineno">  402</span>  <span class="comment">// Read the values</span></div>
+<div class="line"><span class="lineno">  403</span>  <a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> = Wire.read(); </div>
+<div class="line"><span class="lineno">  404</span>  <a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a> = Wire.read();</div>
+<div class="line"><span class="lineno">  405</span> </div>
+<div class="line"><span class="lineno">  406</span>  <span class="comment">// Calculate Accelerometer</span></div>
+<div class="line"><span class="lineno">  407</span>  <span class="keywordflow">return</span> (((int16_t)<a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> &lt;&lt;8) + (int16_t)<a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a>);</div>
+<div class="line"><span class="lineno">  408</span>}</div>
+<div class="ttc" id="aimu_8ino_html_a061270f4e92f9086ca193d5a44e1a524"><div class="ttname"><a href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a></div><div class="ttdeci">int nReceived</div><div class="ttdoc">Nombre d’octets reçus lors de la lecture I2C.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00114">imu.ino:114</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a34e5830fb62769da02778d89e63da261"><div class="ttname"><a href="#a34e5830fb62769da02778d89e63da261">_byteLow</a></div><div class="ttdeci">byte _byteLow</div><div class="ttdoc">Octet de poids faible d’une valeur sur 16 bits.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00123">imu.ino:123</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a54d50bad69d20fd3ad9841dd3e7f6c48"><div class="ttname"><a href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a></div><div class="ttdeci">byte _byteHigh</div><div class="ttdoc">Octet de poids fort d’une valeur sur 16 bits.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00120">imu.ino:120</a></div></div>
+<div class="ttc" id="aimu_8ino_html_aace96dadf1e259f9e1107a08bdbb3968"><div class="ttname"><a href="#aace96dadf1e259f9e1107a08bdbb3968">ACCELERO_X_Register</a></div><div class="ttdeci">#define ACCELERO_X_Register</div><div class="ttdoc">Registre de l’axe X de l’accéléromètre (2 octets)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00090">imu.ino:90</a></div></div>
+<div class="ttc" id="aimu_8ino_html_ab427e6926fcc47eb1c02c1f78162b6f6"><div class="ttname"><a href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a></div><div class="ttdeci">#define TWO_BYTES</div><div class="ttdoc">Constante représentant la lecture de deux octets.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00106">imu.ino:106</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00120">_byteHigh</a>, <a class="el" href="imu_8ino_source.html#l00123">_byteLow</a>, <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, <a class="el" href="imu_8ino_source.html#l00090">ACCELERO_X_Register</a>, <a class="el" href="imu_8ino_source.html#l00114">nReceived</a>, et <a class="el" href="imu_8ino_source.html#l00106">TWO_BYTES</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="imu_8ino_aac544176696908ac90ce0e64301a291c_icgraph.svg" width="204" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a4f9e8d1bf4f730620a632f94048c483a" name="a4f9e8d1bf4f730620a632f94048c483a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f9e8d1bf4f730620a632f94048c483a">&#9670;&#160;</a></span>getAcceleroY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t getAcceleroY </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit la valeur brute de l'accélération sur l'axe Y depuis le capteur CMPS12. </p>
+<p>Cette fonction interroge le registre de l'accéléromètre Y du CMPS12 via I2C, lit deux octets (MSB + LSB) et les combine pour obtenir une valeur signée 16 bits.</p>
+<p>La valeur retournée est brute (en LSB) et peut être convertie en m/s² en utilisant l’échelle <code>_accelScale = 1.0f / 100.f</code>.</p>
+<dl class="section note"><dt>Note</dt><dd>En cas de problème de communication ou de réception incomplète, retourne 0.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int16_t Valeur d'accélération brute sur l’axe Y, ou 0 si erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00424">424</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  425</span>{ </div>
+<div class="line"><span class="lineno">  426</span>  <span class="comment">// Begin communication with CMPS12</span></div>
+<div class="line"><span class="lineno">  427</span>  Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  428</span> </div>
+<div class="line"><span class="lineno">  429</span>  <span class="comment">// Tell register you want some data</span></div>
+<div class="line"><span class="lineno">  430</span>  Wire.write(<a class="code hl_define" href="#ad13065fe4802e7f3e00c026909674342">ACCELERO_Y_Register</a>);</div>
+<div class="line"><span class="lineno">  431</span> </div>
+<div class="line"><span class="lineno">  432</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  433</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  434</span> </div>
+<div class="line"><span class="lineno">  435</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  436</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span> 0;}</div>
+<div class="line"><span class="lineno">  437</span>  </div>
+<div class="line"><span class="lineno">  438</span>  <span class="comment">// Request 2 bytes from CMPS12</span></div>
+<div class="line"><span class="lineno">  439</span>  <a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> = Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a> , <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>);</div>
+<div class="line"><span class="lineno">  440</span> </div>
+<div class="line"><span class="lineno">  441</span>  <span class="comment">// Something has gone wrong</span></div>
+<div class="line"><span class="lineno">  442</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> != <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  443</span> </div>
+<div class="line"><span class="lineno">  444</span>  <span class="comment">// Read the values</span></div>
+<div class="line"><span class="lineno">  445</span>  <a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> = Wire.read(); </div>
+<div class="line"><span class="lineno">  446</span>  <a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a> = Wire.read();</div>
+<div class="line"><span class="lineno">  447</span> </div>
+<div class="line"><span class="lineno">  448</span>  <span class="comment">// Calculate Accelerometer</span></div>
+<div class="line"><span class="lineno">  449</span>  <span class="keywordflow">return</span> (((int16_t)<a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> &lt;&lt;8) + (int16_t)<a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a>);</div>
+<div class="line"><span class="lineno">  450</span>}</div>
+<div class="ttc" id="aimu_8ino_html_ad13065fe4802e7f3e00c026909674342"><div class="ttname"><a href="#ad13065fe4802e7f3e00c026909674342">ACCELERO_Y_Register</a></div><div class="ttdeci">#define ACCELERO_Y_Register</div><div class="ttdoc">Registre de l’axe Y de l’accéléromètre (2 octets)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00092">imu.ino:92</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00120">_byteHigh</a>, <a class="el" href="imu_8ino_source.html#l00123">_byteLow</a>, <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, <a class="el" href="imu_8ino_source.html#l00092">ACCELERO_Y_Register</a>, <a class="el" href="imu_8ino_source.html#l00114">nReceived</a>, et <a class="el" href="imu_8ino_source.html#l00106">TWO_BYTES</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="imu_8ino_a4f9e8d1bf4f730620a632f94048c483a_icgraph.svg" width="204" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a8341338bdffce8d5a7cbdda2098c663c" name="a8341338bdffce8d5a7cbdda2098c663c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8341338bdffce8d5a7cbdda2098c663c">&#9670;&#160;</a></span>getAcceleroZ()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t getAcceleroZ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit la valeur brute de l'accélération sur l'axe Z depuis le capteur CMPS12. </p>
+<p>Cette fonction interroge le registre de l'accéléromètre Z du CMPS12 via I2C, lit deux octets (MSB + LSB) et les combine pour obtenir une valeur signée 16 bits.</p>
+<p>La valeur retournée est brute (en LSB) et peut être convertie en m/s² en utilisant l’échelle <code>_accelScale = 1.0f / 100.f</code>.</p>
+<dl class="section note"><dt>Note</dt><dd>En cas de problème de communication ou de réception incomplète, retourne 0.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int16_t Valeur d'accélération brute sur l’axe Z, ou 0 si erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00465">465</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  466</span>{</div>
+<div class="line"><span class="lineno">  467</span>  <span class="comment">// Begin communication with CMPS12</span></div>
+<div class="line"><span class="lineno">  468</span>  Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  469</span> </div>
+<div class="line"><span class="lineno">  470</span>  <span class="comment">// Tell register you want some data</span></div>
+<div class="line"><span class="lineno">  471</span>  Wire.write(<a class="code hl_define" href="#a25184aa52f0472a2c0ed75e42cbbc4fd">ACCELERO_Z_Register</a>);</div>
+<div class="line"><span class="lineno">  472</span> </div>
+<div class="line"><span class="lineno">  473</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  474</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  475</span> </div>
+<div class="line"><span class="lineno">  476</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  477</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span> 0;}</div>
+<div class="line"><span class="lineno">  478</span>  </div>
+<div class="line"><span class="lineno">  479</span>  <span class="comment">// Request 2 bytes from CMPS12</span></div>
+<div class="line"><span class="lineno">  480</span>  <a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> = Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a> , <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>);</div>
+<div class="line"><span class="lineno">  481</span> </div>
+<div class="line"><span class="lineno">  482</span>  <span class="comment">// Something has gone wrong</span></div>
+<div class="line"><span class="lineno">  483</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> != <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  484</span> </div>
+<div class="line"><span class="lineno">  485</span>  <span class="comment">// Read the values</span></div>
+<div class="line"><span class="lineno">  486</span>  <a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> = Wire.read(); </div>
+<div class="line"><span class="lineno">  487</span>  <a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a> = Wire.read();</div>
+<div class="line"><span class="lineno">  488</span> </div>
+<div class="line"><span class="lineno">  489</span>  <span class="comment">// Calculate Accelerometer</span></div>
+<div class="line"><span class="lineno">  490</span>  <span class="keywordflow">return</span> (((int16_t)<a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> &lt;&lt;8) + (int16_t)<a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a>);</div>
+<div class="line"><span class="lineno">  491</span> </div>
+<div class="line"><span class="lineno">  492</span>}</div>
+<div class="ttc" id="aimu_8ino_html_a25184aa52f0472a2c0ed75e42cbbc4fd"><div class="ttname"><a href="#a25184aa52f0472a2c0ed75e42cbbc4fd">ACCELERO_Z_Register</a></div><div class="ttdeci">#define ACCELERO_Z_Register</div><div class="ttdoc">Registre de l’axe XZde l’accéléromètre (2 octets)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00094">imu.ino:94</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00120">_byteHigh</a>, <a class="el" href="imu_8ino_source.html#l00123">_byteLow</a>, <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, <a class="el" href="imu_8ino_source.html#l00094">ACCELERO_Z_Register</a>, <a class="el" href="imu_8ino_source.html#l00114">nReceived</a>, et <a class="el" href="imu_8ino_source.html#l00106">TWO_BYTES</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="imu_8ino_a8341338bdffce8d5a7cbdda2098c663c_icgraph.svg" width="203" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a633dcef74092fac673ee9fea6cacadbb" name="a633dcef74092fac673ee9fea6cacadbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a633dcef74092fac673ee9fea6cacadbb">&#9670;&#160;</a></span>getBearing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t getBearing </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit le cap (heading) du capteur CMPS12. </p>
+<p>Cette fonction lit les deux octets représentant l'angle d’orientation du capteur CMPS12. L’angle est renvoyé en dixièmes de degrés.</p>
+<dl class="section note"><dt>Note</dt><dd>Si la lecture échoue (capteur non disponible), retourne -1.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int Cap en dixièmes de degrés (ex: 1234 = 123.4°), ou -1 en cas d’échec. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00262">262</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  263</span>{</div>
+<div class="line"><span class="lineno">  264</span>  <span class="comment">// Begin communication with CMPS12</span></div>
+<div class="line"><span class="lineno">  265</span>  Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  266</span> </div>
+<div class="line"><span class="lineno">  267</span>  <span class="comment">// Tell register you want some data</span></div>
+<div class="line"><span class="lineno">  268</span>  Wire.write(<a class="code hl_define" href="#a8ac0df227eecadaf2294e3ccd6316e6b">BEARING_Register</a>);</div>
+<div class="line"><span class="lineno">  269</span> </div>
+<div class="line"><span class="lineno">  270</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  271</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  272</span> </div>
+<div class="line"><span class="lineno">  273</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  274</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span> 0;}</div>
+<div class="line"><span class="lineno">  275</span>  </div>
+<div class="line"><span class="lineno">  276</span>  <span class="comment">// Request 2 bytes from CMPS12</span></div>
+<div class="line"><span class="lineno">  277</span>  <a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> = Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a> , <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>);</div>
+<div class="line"><span class="lineno">  278</span> </div>
+<div class="line"><span class="lineno">  279</span>  <span class="comment">// Something has gone wrong</span></div>
+<div class="line"><span class="lineno">  280</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> != <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  281</span> </div>
+<div class="line"><span class="lineno">  282</span>  <span class="comment">// Read the values</span></div>
+<div class="line"><span class="lineno">  283</span>  <a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> = Wire.read(); </div>
+<div class="line"><span class="lineno">  284</span>  <a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a> = Wire.read();</div>
+<div class="line"><span class="lineno">  285</span> </div>
+<div class="line"><span class="lineno">  286</span>  <span class="comment">// Calculate full bearing</span></div>
+<div class="line"><span class="lineno">  287</span>  <a class="code hl_variable" href="#a91c120f16cf304879a5c8d38d1ab3cca">_bearing</a> = ((<a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a>&lt;&lt;8) + <a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a>) / 10;</div>
+<div class="line"><span class="lineno">  288</span>  </div>
+<div class="line"><span class="lineno">  289</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="#a91c120f16cf304879a5c8d38d1ab3cca">_bearing</a>;</div>
+<div class="line"><span class="lineno">  290</span>}</div>
+<div class="ttc" id="aimu_8ino_html_a8ac0df227eecadaf2294e3ccd6316e6b"><div class="ttname"><a href="#a8ac0df227eecadaf2294e3ccd6316e6b">BEARING_Register</a></div><div class="ttdeci">#define BEARING_Register</div><div class="ttdoc">Registre de poids fort de l’angle de cap (2 octets)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00071">imu.ino:71</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a91c120f16cf304879a5c8d38d1ab3cca"><div class="ttname"><a href="#a91c120f16cf304879a5c8d38d1ab3cca">_bearing</a></div><div class="ttdeci">int _bearing</div><div class="ttdoc">Cap (bearing) brut lu depuis le capteur, en dixièmes de degré (0–3599)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00111">imu.ino:111</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00111">_bearing</a>, <a class="el" href="imu_8ino_source.html#l00120">_byteHigh</a>, <a class="el" href="imu_8ino_source.html#l00123">_byteLow</a>, <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, <a class="el" href="imu_8ino_source.html#l00071">BEARING_Register</a>, <a class="el" href="imu_8ino_source.html#l00114">nReceived</a>, et <a class="el" href="imu_8ino_source.html#l00106">TWO_BYTES</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="imu_8ino_a633dcef74092fac673ee9fea6cacadbb_icgraph.svg" width="188" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a1472d49812b8e22ec5ab9eca01780999" name="a1472d49812b8e22ec5ab9eca01780999"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1472d49812b8e22ec5ab9eca01780999">&#9670;&#160;</a></span>getMagnetX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t getMagnetX </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit la valeur brute du champ magnétique sur l’axe X depuis le capteur CMPS12. </p>
+<p>Cette fonction interroge le registre du magnétomètre X via I2C. Elle lit deux octets (MSB + LSB), les combine pour produire une valeur entière signée 16 bits représentant l’intensité du champ magnétique.</p>
+<dl class="section note"><dt>Note</dt><dd>La valeur retournée est brute (en LSB) et peut être convertie en µT si l’échelle est connue (non fournie par défaut par CMPS12).</dd>
+<dd>
+En cas d’échec de communication ou de réception incomplète, la fonction retourne 0.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int16_t Valeur brute du champ magnétique sur l’axe X, ou 0 si erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00509">509</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  510</span>{</div>
+<div class="line"><span class="lineno">  511</span>  <span class="comment">// Begin communication with CMPS12</span></div>
+<div class="line"><span class="lineno">  512</span>  Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  513</span> </div>
+<div class="line"><span class="lineno">  514</span>  <span class="comment">// Tell register you want some data</span></div>
+<div class="line"><span class="lineno">  515</span>  Wire.write(<a class="code hl_define" href="#ad9389989476f3c6ac05b144a80489f80">MAGNET_X_Register</a>);</div>
+<div class="line"><span class="lineno">  516</span> </div>
+<div class="line"><span class="lineno">  517</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  518</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  519</span> </div>
+<div class="line"><span class="lineno">  520</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  521</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span> 0;}</div>
+<div class="line"><span class="lineno">  522</span>  </div>
+<div class="line"><span class="lineno">  523</span>  <span class="comment">// Request 2 bytes from CMPS12</span></div>
+<div class="line"><span class="lineno">  524</span>  <a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> = Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a> , <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>);</div>
+<div class="line"><span class="lineno">  525</span> </div>
+<div class="line"><span class="lineno">  526</span>  <span class="comment">// Something has gone wrong</span></div>
+<div class="line"><span class="lineno">  527</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> != <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  528</span> </div>
+<div class="line"><span class="lineno">  529</span>  <span class="comment">// Read the values</span></div>
+<div class="line"><span class="lineno">  530</span>  <a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> = Wire.read(); </div>
+<div class="line"><span class="lineno">  531</span>  <a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a> = Wire.read();</div>
+<div class="line"><span class="lineno">  532</span> </div>
+<div class="line"><span class="lineno">  533</span>  <span class="comment">// Calculate value</span></div>
+<div class="line"><span class="lineno">  534</span>  <span class="keywordflow">return</span> (((int16_t)<a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> &lt;&lt;8) + (int16_t)<a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a>);</div>
+<div class="line"><span class="lineno">  535</span>}</div>
+<div class="ttc" id="aimu_8ino_html_ad9389989476f3c6ac05b144a80489f80"><div class="ttname"><a href="#ad9389989476f3c6ac05b144a80489f80">MAGNET_X_Register</a></div><div class="ttdeci">#define MAGNET_X_Register</div><div class="ttdoc">Registre de l’axe X du magnétomètre (2 octets)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00081">imu.ino:81</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00120">_byteHigh</a>, <a class="el" href="imu_8ino_source.html#l00123">_byteLow</a>, <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, <a class="el" href="imu_8ino_source.html#l00081">MAGNET_X_Register</a>, <a class="el" href="imu_8ino_source.html#l00114">nReceived</a>, et <a class="el" href="imu_8ino_source.html#l00106">TWO_BYTES</a>.</p>
+
+</div>
+</div>
+<a id="ae5df4172a18508e4e021ced035e2aef6" name="ae5df4172a18508e4e021ced035e2aef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5df4172a18508e4e021ced035e2aef6">&#9670;&#160;</a></span>getMagnetY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t getMagnetY </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit la valeur brute du champ magnétique sur l’axe Y depuis le capteur CMPS12. </p>
+<p>Cette fonction interroge le registre du magnétomètre Y via I2C. Elle lit deux octets (MSB + LSB), les combine pour produire une valeur entière signée 16 bits représentant l’intensité du champ magnétique.</p>
+<dl class="section note"><dt>Note</dt><dd>La valeur retournée est brute (en LSB) et peut être convertie en µT si l’échelle est connue (non fournie par défaut par CMPS12).</dd>
+<dd>
+En cas d’échec de communication ou de réception incomplète, la fonction retourne 0.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int16_t Valeur brute du champ magnétique sur l’axe Y, ou 0 si erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00552">552</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  553</span>{</div>
+<div class="line"><span class="lineno">  554</span>  <span class="comment">// Begin communication with CMPS12</span></div>
+<div class="line"><span class="lineno">  555</span>  Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  556</span> </div>
+<div class="line"><span class="lineno">  557</span>  <span class="comment">// Tell register you want some data</span></div>
+<div class="line"><span class="lineno">  558</span>  Wire.write(<a class="code hl_define" href="#a13a3ec01aba58fd69a365c81ac27a4ff">MAGNET_Y_Register</a>);</div>
+<div class="line"><span class="lineno">  559</span> </div>
+<div class="line"><span class="lineno">  560</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  561</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  562</span> </div>
+<div class="line"><span class="lineno">  563</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  564</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span> 0;}</div>
+<div class="line"><span class="lineno">  565</span>  </div>
+<div class="line"><span class="lineno">  566</span>  <span class="comment">// Request 2 bytes from CMPS12</span></div>
+<div class="line"><span class="lineno">  567</span>  <a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> = Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a> , <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>);</div>
+<div class="line"><span class="lineno">  568</span> </div>
+<div class="line"><span class="lineno">  569</span>  <span class="comment">// Something has gone wrong</span></div>
+<div class="line"><span class="lineno">  570</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> != <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  571</span> </div>
+<div class="line"><span class="lineno">  572</span>  <span class="comment">// Read the values</span></div>
+<div class="line"><span class="lineno">  573</span>  <a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> = Wire.read(); </div>
+<div class="line"><span class="lineno">  574</span>  <a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a> = Wire.read();</div>
+<div class="line"><span class="lineno">  575</span> </div>
+<div class="line"><span class="lineno">  576</span>  <span class="comment">// Calculate value</span></div>
+<div class="line"><span class="lineno">  577</span>  <span class="keywordflow">return</span> (((int16_t)<a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> &lt;&lt;8) + (int16_t)<a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a>);</div>
+<div class="line"><span class="lineno">  578</span>}</div>
+<div class="ttc" id="aimu_8ino_html_a13a3ec01aba58fd69a365c81ac27a4ff"><div class="ttname"><a href="#a13a3ec01aba58fd69a365c81ac27a4ff">MAGNET_Y_Register</a></div><div class="ttdeci">#define MAGNET_Y_Register</div><div class="ttdoc">Registre de l’axe Y du magnétomètre (2 octets)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00084">imu.ino:84</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00120">_byteHigh</a>, <a class="el" href="imu_8ino_source.html#l00123">_byteLow</a>, <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, <a class="el" href="imu_8ino_source.html#l00084">MAGNET_Y_Register</a>, <a class="el" href="imu_8ino_source.html#l00114">nReceived</a>, et <a class="el" href="imu_8ino_source.html#l00106">TWO_BYTES</a>.</p>
+
+</div>
+</div>
+<a id="ad6ae97594315980935df02f3f60a7b97" name="ad6ae97594315980935df02f3f60a7b97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6ae97594315980935df02f3f60a7b97">&#9670;&#160;</a></span>getMagnetZ()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t getMagnetZ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit la valeur brute du champ magnétique sur l’axe Z depuis le capteur CMPS12. </p>
+<p>Cette fonction interroge le registre du magnétomètre Z via I2C. Elle lit deux octets (MSB + LSB), les combine pour produire une valeur entière signée 16 bits représentant l’intensité du champ magnétique.</p>
+<dl class="section note"><dt>Note</dt><dd>La valeur retournée est brute (en LSB) et peut être convertie en µT si l’échelle est connue (non fournie par défaut par CMPS12).</dd>
+<dd>
+En cas d’échec de communication ou de réception incomplète, la fonction retourne 0.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int16_t Valeur brute du champ magnétique sur l’axe Z, ou 0 si erreur. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00595">595</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  596</span>{</div>
+<div class="line"><span class="lineno">  597</span>  <span class="comment">// Begin communication with CMPS12</span></div>
+<div class="line"><span class="lineno">  598</span>  Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  599</span> </div>
+<div class="line"><span class="lineno">  600</span>  <span class="comment">// Tell register you want some data</span></div>
+<div class="line"><span class="lineno">  601</span>  Wire.write(<a class="code hl_define" href="#ac66ce30c2e02525aa377ddb582340df7">MAGNET_Z_Register</a>);</div>
+<div class="line"><span class="lineno">  602</span> </div>
+<div class="line"><span class="lineno">  603</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  604</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  605</span> </div>
+<div class="line"><span class="lineno">  606</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  607</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span> 0;}</div>
+<div class="line"><span class="lineno">  608</span>  </div>
+<div class="line"><span class="lineno">  609</span>  <span class="comment">// Request 2 bytes from CMPS12</span></div>
+<div class="line"><span class="lineno">  610</span>  <a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> = Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a> , <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>);</div>
+<div class="line"><span class="lineno">  611</span> </div>
+<div class="line"><span class="lineno">  612</span>  <span class="comment">// Something has gone wrong</span></div>
+<div class="line"><span class="lineno">  613</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> != <a class="code hl_define" href="#ab427e6926fcc47eb1c02c1f78162b6f6">TWO_BYTES</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  614</span> </div>
+<div class="line"><span class="lineno">  615</span>  <span class="comment">// Read the values</span></div>
+<div class="line"><span class="lineno">  616</span>  <a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> = Wire.read(); </div>
+<div class="line"><span class="lineno">  617</span>  <a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a> = Wire.read();</div>
+<div class="line"><span class="lineno">  618</span> </div>
+<div class="line"><span class="lineno">  619</span>  <span class="comment">// Calculate value</span></div>
+<div class="line"><span class="lineno">  620</span>  <span class="keywordflow">return</span> (((int16_t)<a class="code hl_variable" href="#a54d50bad69d20fd3ad9841dd3e7f6c48">_byteHigh</a> &lt;&lt;8) + (int16_t)<a class="code hl_variable" href="#a34e5830fb62769da02778d89e63da261">_byteLow</a>);</div>
+<div class="line"><span class="lineno">  621</span>}</div>
+<div class="ttc" id="aimu_8ino_html_ac66ce30c2e02525aa377ddb582340df7"><div class="ttname"><a href="#ac66ce30c2e02525aa377ddb582340df7">MAGNET_Z_Register</a></div><div class="ttdeci">#define MAGNET_Z_Register</div><div class="ttdoc">Registre de l’axe Z du magnétomètre (2 octets)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00087">imu.ino:87</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00120">_byteHigh</a>, <a class="el" href="imu_8ino_source.html#l00123">_byteLow</a>, <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, <a class="el" href="imu_8ino_source.html#l00087">MAGNET_Z_Register</a>, <a class="el" href="imu_8ino_source.html#l00114">nReceived</a>, et <a class="el" href="imu_8ino_source.html#l00106">TWO_BYTES</a>.</p>
+
+</div>
+</div>
+<a id="a01368419dcdb944b1595cec3690b4390" name="a01368419dcdb944b1595cec3690b4390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01368419dcdb944b1595cec3690b4390">&#9670;&#160;</a></span>getPitch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte getPitch </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit l’angle de tangage (pitch) depuis le capteur CMPS12. </p>
+<p>Cette fonction communique avec le registre de tangage du CMPS12 via I2C. Elle lit un octet signé représentant l’inclinaison avant/arrière du bateau sur l’axe longitudinal (pitch), exprimée en degrés dans l’intervalle [-90, +90].</p>
+<p>En cas d’échec de communication ou d'erreur de lecture, la fonction retourne 0.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>byte Valeur du tangage (pitch) en degrés signés, ou 0 en cas d’échec. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00304">304</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  305</span>{</div>
+<div class="line"><span class="lineno">  306</span>  <span class="comment">// Begin communication with CMPS12</span></div>
+<div class="line"><span class="lineno">  307</span>  Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  308</span> </div>
+<div class="line"><span class="lineno">  309</span>  <span class="comment">// Tell register you want some data</span></div>
+<div class="line"><span class="lineno">  310</span>  Wire.write(<a class="code hl_define" href="#a7b24bb5a7a1d4cbc1ce8b17f0681eb3c">PITCH_Register</a>);</div>
+<div class="line"><span class="lineno">  311</span> </div>
+<div class="line"><span class="lineno">  312</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  313</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  314</span> </div>
+<div class="line"><span class="lineno">  315</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  316</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span> 0;}</div>
+<div class="line"><span class="lineno">  317</span> </div>
+<div class="line"><span class="lineno">  318</span>  <span class="comment">// Request 1 byte from CMPS12</span></div>
+<div class="line"><span class="lineno">  319</span>  <a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> = Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a> , <a class="code hl_define" href="#ab6ab60c8c7e1f9fa0d00ea25b917a7e1">ONE_BYTE</a>);</div>
+<div class="line"><span class="lineno">  320</span> </div>
+<div class="line"><span class="lineno">  321</span>  <span class="comment">// Something has gone wrong</span></div>
+<div class="line"><span class="lineno">  322</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> != <a class="code hl_define" href="#ab6ab60c8c7e1f9fa0d00ea25b917a7e1">ONE_BYTE</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  323</span> </div>
+<div class="line"><span class="lineno">  324</span>  <span class="comment">// Read the values</span></div>
+<div class="line"><span class="lineno">  325</span>  <a class="code hl_variable" href="#a660177f3ca1839395481776268a7e7d7">_pitch</a> = Wire.read();</div>
+<div class="line"><span class="lineno">  326</span> </div>
+<div class="line"><span class="lineno">  327</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="#a660177f3ca1839395481776268a7e7d7">_pitch</a>;</div>
+<div class="line"><span class="lineno">  328</span>}</div>
+<div class="ttc" id="aimu_8ino_html_a660177f3ca1839395481776268a7e7d7"><div class="ttname"><a href="#a660177f3ca1839395481776268a7e7d7">_pitch</a></div><div class="ttdeci">char _pitch</div><div class="ttdoc">Valeur du tangage (pitch), exprimée en degrés signés (-90 à +90)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00126">imu.ino:126</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a7b24bb5a7a1d4cbc1ce8b17f0681eb3c"><div class="ttname"><a href="#a7b24bb5a7a1d4cbc1ce8b17f0681eb3c">PITCH_Register</a></div><div class="ttdeci">#define PITCH_Register</div><div class="ttdoc">Registre contenant le tangage (pitch), en degrés signés (-90 à +90)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00074">imu.ino:74</a></div></div>
+<div class="ttc" id="aimu_8ino_html_ab6ab60c8c7e1f9fa0d00ea25b917a7e1"><div class="ttname"><a href="#ab6ab60c8c7e1f9fa0d00ea25b917a7e1">ONE_BYTE</a></div><div class="ttdeci">#define ONE_BYTE</div><div class="ttdoc">Constante représentant la lecture d’un seul octet.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00104">imu.ino:104</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, <a class="el" href="imu_8ino_source.html#l00126">_pitch</a>, <a class="el" href="imu_8ino_source.html#l00114">nReceived</a>, <a class="el" href="imu_8ino_source.html#l00104">ONE_BYTE</a>, et <a class="el" href="imu_8ino_source.html#l00074">PITCH_Register</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="imu_8ino_a01368419dcdb944b1595cec3690b4390_icgraph.svg" width="174" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a485acf4028301ffe4f9cadf3368ca27a" name="a485acf4028301ffe4f9cadf3368ca27a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a485acf4028301ffe4f9cadf3368ca27a">&#9670;&#160;</a></span>getRoll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte getRoll </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit l’angle de roulis (roll) du capteur CMPS12. </p>
+<p>Cette fonction lit un octet signé représentant l’angle d’inclinaison latérale. Elle permet d’évaluer le basculement du bateau sur l’axe longitudinal.</p>
+<dl class="section note"><dt>Note</dt><dd>Le capteur retourne une valeur entière entre -90° et +90°. </dd>
+<dd>
+En cas d’échec de communication, retourne 0 par défaut.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int8_t Roulis en degrés (entre -90 et +90) </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00343">343</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  344</span>{</div>
+<div class="line"><span class="lineno">  345</span>  <span class="comment">// Begin communication with CMPS12</span></div>
+<div class="line"><span class="lineno">  346</span>  Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  347</span> </div>
+<div class="line"><span class="lineno">  348</span>  <span class="comment">// Tell register you want some data</span></div>
+<div class="line"><span class="lineno">  349</span>  Wire.write(<a class="code hl_define" href="#a1878200a9eaa208c210b5d2c2e48bd49">ROLL_Register</a>);</div>
+<div class="line"><span class="lineno">  350</span> </div>
+<div class="line"><span class="lineno">  351</span>  <span class="comment">// End the transmission</span></div>
+<div class="line"><span class="lineno">  352</span>  <span class="keywordtype">int</span> nackCatcher = Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  353</span> </div>
+<div class="line"><span class="lineno">  354</span>  <span class="comment">// Return if we have a connection problem </span></div>
+<div class="line"><span class="lineno">  355</span>  <span class="keywordflow">if</span>(nackCatcher != 0){<span class="keywordflow">return</span> 0;}</div>
+<div class="line"><span class="lineno">  356</span>  </div>
+<div class="line"><span class="lineno">  357</span>  <span class="comment">// Request 1 byte from CMPS12</span></div>
+<div class="line"><span class="lineno">  358</span>  <a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> = Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a> , <a class="code hl_define" href="#ab6ab60c8c7e1f9fa0d00ea25b917a7e1">ONE_BYTE</a>);</div>
+<div class="line"><span class="lineno">  359</span> </div>
+<div class="line"><span class="lineno">  360</span>  <span class="comment">// Something has gone wrong</span></div>
+<div class="line"><span class="lineno">  361</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a061270f4e92f9086ca193d5a44e1a524">nReceived</a> != <a class="code hl_define" href="#ab6ab60c8c7e1f9fa0d00ea25b917a7e1">ONE_BYTE</a>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  362</span> </div>
+<div class="line"><span class="lineno">  363</span>  <span class="comment">// Read the values</span></div>
+<div class="line"><span class="lineno">  364</span>  <a class="code hl_variable" href="#a7abf44986398977320add9c1f08a5f3c">_roll</a> = Wire.read();</div>
+<div class="line"><span class="lineno">  365</span> </div>
+<div class="line"><span class="lineno">  366</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7abf44986398977320add9c1f08a5f3c">_roll</a> ;</div>
+<div class="line"><span class="lineno">  367</span>}</div>
+<div class="ttc" id="aimu_8ino_html_a1878200a9eaa208c210b5d2c2e48bd49"><div class="ttname"><a href="#a1878200a9eaa208c210b5d2c2e48bd49">ROLL_Register</a></div><div class="ttdeci">#define ROLL_Register</div><div class="ttdoc">Registre contenant le roulis (roll), en degrés signés (-90 à +90)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00077">imu.ino:77</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a7abf44986398977320add9c1f08a5f3c"><div class="ttname"><a href="#a7abf44986398977320add9c1f08a5f3c">_roll</a></div><div class="ttdeci">char _roll</div><div class="ttdoc">Valeur du roulis (roll), exprimée en degrés signés (-90 à +90)</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00129">imu.ino:129</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, <a class="el" href="imu_8ino_source.html#l00129">_roll</a>, <a class="el" href="imu_8ino_source.html#l00114">nReceived</a>, <a class="el" href="imu_8ino_source.html#l00104">ONE_BYTE</a>, et <a class="el" href="imu_8ino_source.html#l00077">ROLL_Register</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="imu_8ino_a485acf4028301ffe4f9cadf3368ca27a_icgraph.svg" width="167" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a83c8fb539bbb223156e3904104e2eb4d" name="a83c8fb539bbb223156e3904104e2eb4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c8fb539bbb223156e3904104e2eb4d">&#9670;&#160;</a></span>isCalibrationOk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isCalibrationOk </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si la calibration du capteur CMPS12 est terminée avec succès. </p>
+<p>Cette fonction interroge le registre de statut de calibration du CMPS12 via I2C. Elle considère la calibration comme réussie si le registre retourne la valeur <code>0xFF</code>.</p>
+<dl class="section note"><dt>Note</dt><dd>Cette vérification est cruciale avant d’utiliser les données d’orientation du capteur.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si la calibration est complète (<code>0xFF</code>), false sinon (erreur ou incomplète). </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00239">239</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  239</span>                       {</div>
+<div class="line"><span class="lineno">  240</span>    Wire.beginTransmission(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>);</div>
+<div class="line"><span class="lineno">  241</span>    Wire.write(<a class="code hl_define" href="#aefed5acd0aebdd29b21fa80147df9179">CALIBRATION_STATUS_REG</a>);</div>
+<div class="line"><span class="lineno">  242</span>    Wire.endTransmission();</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>    Wire.requestFrom(<a class="code hl_define" href="#acf85bcce091c4dd8ba11f8b67b8edff0">_i2cAddress</a>, 1);</div>
+<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">if</span> (Wire.available()) {</div>
+<div class="line"><span class="lineno">  246</span>        uint8_t status = Wire.read();</div>
+<div class="line"><span class="lineno">  247</span>        <span class="keywordflow">return</span> (status == 0xFF); <span class="comment">// Calibration complète uniquement</span></div>
+<div class="line"><span class="lineno">  248</span>    }</div>
+<div class="line"><span class="lineno">  249</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Erreur de lecture</span></div>
+<div class="line"><span class="lineno">  250</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00062">_i2cAddress</a>, et <a class="el" href="imu_8ino_source.html#l00065">CALIBRATION_STATUS_REG</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="imu_8ino_a83c8fb539bbb223156e3904104e2eb4d_icgraph.svg" width="215" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="afe461d27b9c48d5921c00d521181f12f" name="afe461d27b9c48d5921c00d521181f12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe461d27b9c48d5921c00d521181f12f">&#9670;&#160;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Boucle principale du programme. </p>
+<p>Appelle les fonctions de lecture du cap et du roll, puis affiche les valeurs obtenues sur le moniteur série. Répète l’opération toutes les 500 ms.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00183">183</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  183</span>            {</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span> </div>
+<div class="line"><span class="lineno">  186</span>  <span class="keywordflow">if</span>(<a class="code hl_function" href="#a83c8fb539bbb223156e3904104e2eb4d">isCalibrationOk</a>())</div>
+<div class="line"><span class="lineno">  187</span>  {</div>
+<div class="line"><span class="lineno">  188</span>    digitalWrite(LED_BUILTIN, HIGH);  <span class="comment">// turn the LED on (HIGH is the voltage level)</span></div>
+<div class="line"><span class="lineno">  189</span>    delay(500);                      <span class="comment">// wait for a second</span></div>
+<div class="line"><span class="lineno">  190</span>    digitalWrite(LED_BUILTIN, LOW);   <span class="comment">// turn the LED off by making the voltage LOW</span></div>
+<div class="line"><span class="lineno">  191</span>    delay(500);</div>
+<div class="line"><span class="lineno">  192</span>  }</div>
+<div class="line"><span class="lineno">  193</span>  </div>
+<div class="line"><span class="lineno">  194</span>  <span class="comment">// read the compass</span></div>
+<div class="line"><span class="lineno">  195</span>  </div>
+<div class="line"><span class="lineno">  196</span>  <span class="keywordtype">int</span> g_cap_actuel_bateau = <a class="code hl_function" href="#a633dcef74092fac673ee9fea6cacadbb">getBearing</a>();</div>
+<div class="line"><span class="lineno">  197</span> </div>
+<div class="line"><span class="lineno">  198</span>  <span class="keywordtype">signed</span> <span class="keywordtype">char</span> g_gite_bateau = <a class="code hl_function" href="#a01368419dcdb944b1595cec3690b4390">getPitch</a>();</div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>  <span class="keywordtype">signed</span> <span class="keywordtype">char</span> roll = <a class="code hl_function" href="#a485acf4028301ffe4f9cadf3368ca27a">getRoll</a>();</div>
+<div class="line"><span class="lineno">  201</span> </div>
+<div class="line"><span class="lineno">  202</span>  <span class="comment">// Read the accelerator</span></div>
+<div class="line"><span class="lineno">  203</span>  <a class="code hl_variable" href="#aacba609411591be29de17c7003311877">g_acceleration_x_bateau</a> = <a class="code hl_function" href="#aac544176696908ac90ce0e64301a291c">getAcceleroX</a>() * <a class="code hl_variable" href="#addca3d8fc0e85b82c2ad91b7c48e8607">_accelScale</a>;</div>
+<div class="line"><span class="lineno">  204</span>  <a class="code hl_variable" href="#a43e79b1e6b00d3d58452c6ca31250f90">g_acceleration_y_bateau</a> = <a class="code hl_function" href="#a4f9e8d1bf4f730620a632f94048c483a">getAcceleroY</a>() * <a class="code hl_variable" href="#addca3d8fc0e85b82c2ad91b7c48e8607">_accelScale</a>;</div>
+<div class="line"><span class="lineno">  205</span>  <a class="code hl_variable" href="#a72432cbd71c2e9c8e99908978d1eb474">g_acceleration_z_bateau</a> = <a class="code hl_function" href="#a8341338bdffce8d5a7cbdda2098c663c">getAcceleroZ</a>() * <a class="code hl_variable" href="#addca3d8fc0e85b82c2ad91b7c48e8607">_accelScale</a>;</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>  <span class="comment">// Print data to Serial Monitor window</span></div>
+<div class="line"><span class="lineno">  208</span>  </div>
+<div class="line"><span class="lineno">  209</span>  Serial.print(<span class="stringliteral">&quot;$CMP, relèvement :&quot;</span>);</div>
+<div class="line"><span class="lineno">  210</span>  Serial.println(g_cap_actuel_bateau);</div>
+<div class="line"><span class="lineno">  211</span>  <span class="comment">/*Serial.print(&quot; , tangage: &quot;);</span></div>
+<div class="line"><span class="lineno">  212</span><span class="comment">  Serial.print(g_gite_bateau); </span></div>
+<div class="line"><span class="lineno">  213</span><span class="comment">  Serial.print(&quot; , roulis :&quot;);</span></div>
+<div class="line"><span class="lineno">  214</span><span class="comment">  Serial.print(roll);</span></div>
+<div class="line"><span class="lineno">  215</span><span class="comment">  Serial.print(&quot; degree,&quot;);</span></div>
+<div class="line"><span class="lineno">  216</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">  217</span><span class="comment">  Serial.print(&quot;\t$ACC, x :&quot;);</span></div>
+<div class="line"><span class="lineno">  218</span><span class="comment">  Serial.print(g_acceleration_x_bateau,4);</span></div>
+<div class="line"><span class="lineno">  219</span><span class="comment">  Serial.print(&quot; , y :&quot;);</span></div>
+<div class="line"><span class="lineno">  220</span><span class="comment">  Serial.print(g_acceleration_y_bateau,4); </span></div>
+<div class="line"><span class="lineno">  221</span><span class="comment">  Serial.print(&quot; , z :&quot;);</span></div>
+<div class="line"><span class="lineno">  222</span><span class="comment">  Serial.print(g_acceleration_z_bateau,4);</span></div>
+<div class="line"><span class="lineno">  223</span><span class="comment">  Serial.print(&quot; m/s^2,&quot;);*/</span></div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>  delay(100);</div>
+<div class="line"><span class="lineno">  226</span>}</div>
+<div class="ttc" id="aimu_8ino_html_a01368419dcdb944b1595cec3690b4390"><div class="ttname"><a href="#a01368419dcdb944b1595cec3690b4390">getPitch</a></div><div class="ttdeci">byte getPitch()</div><div class="ttdoc">Lit l’angle de tangage (pitch) depuis le capteur CMPS12.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00304">imu.ino:304</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a43e79b1e6b00d3d58452c6ca31250f90"><div class="ttname"><a href="#a43e79b1e6b00d3d58452c6ca31250f90">g_acceleration_y_bateau</a></div><div class="ttdeci">float g_acceleration_y_bateau</div><div class="ttdoc">Accélération sur l’axe Y du bateau, en m/s²</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00135">imu.ino:135</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a485acf4028301ffe4f9cadf3368ca27a"><div class="ttname"><a href="#a485acf4028301ffe4f9cadf3368ca27a">getRoll</a></div><div class="ttdeci">byte getRoll()</div><div class="ttdoc">Lit l’angle de roulis (roll) du capteur CMPS12.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00343">imu.ino:343</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a4f9e8d1bf4f730620a632f94048c483a"><div class="ttname"><a href="#a4f9e8d1bf4f730620a632f94048c483a">getAcceleroY</a></div><div class="ttdeci">int16_t getAcceleroY()</div><div class="ttdoc">Lit la valeur brute de l&#39;accélération sur l&#39;axe Y depuis le capteur CMPS12.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00424">imu.ino:424</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a633dcef74092fac673ee9fea6cacadbb"><div class="ttname"><a href="#a633dcef74092fac673ee9fea6cacadbb">getBearing</a></div><div class="ttdeci">int16_t getBearing()</div><div class="ttdoc">Lit le cap (heading) du capteur CMPS12.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00262">imu.ino:262</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a72432cbd71c2e9c8e99908978d1eb474"><div class="ttname"><a href="#a72432cbd71c2e9c8e99908978d1eb474">g_acceleration_z_bateau</a></div><div class="ttdeci">float g_acceleration_z_bateau</div><div class="ttdoc">Accélération sur l’axe Z du bateau, en m/s²</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00138">imu.ino:138</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a8341338bdffce8d5a7cbdda2098c663c"><div class="ttname"><a href="#a8341338bdffce8d5a7cbdda2098c663c">getAcceleroZ</a></div><div class="ttdeci">int16_t getAcceleroZ()</div><div class="ttdoc">Lit la valeur brute de l&#39;accélération sur l&#39;axe Z depuis le capteur CMPS12.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00465">imu.ino:465</a></div></div>
+<div class="ttc" id="aimu_8ino_html_a83c8fb539bbb223156e3904104e2eb4d"><div class="ttname"><a href="#a83c8fb539bbb223156e3904104e2eb4d">isCalibrationOk</a></div><div class="ttdeci">bool isCalibrationOk()</div><div class="ttdoc">Vérifie si la calibration du capteur CMPS12 est terminée avec succès.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00239">imu.ino:239</a></div></div>
+<div class="ttc" id="aimu_8ino_html_aac544176696908ac90ce0e64301a291c"><div class="ttname"><a href="#aac544176696908ac90ce0e64301a291c">getAcceleroX</a></div><div class="ttdeci">int16_t getAcceleroX()</div><div class="ttdoc">Lit la valeur brute de l&#39;accélération sur l&#39;axe X depuis le capteur CMPS12.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00382">imu.ino:382</a></div></div>
+<div class="ttc" id="aimu_8ino_html_aacba609411591be29de17c7003311877"><div class="ttname"><a href="#aacba609411591be29de17c7003311877">g_acceleration_x_bateau</a></div><div class="ttdeci">float g_acceleration_x_bateau</div><div class="ttdoc">Accélération sur l’axe X du bateau, en m/s²</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00132">imu.ino:132</a></div></div>
+<div class="ttc" id="aimu_8ino_html_addca3d8fc0e85b82c2ad91b7c48e8607"><div class="ttname"><a href="#addca3d8fc0e85b82c2ad91b7c48e8607">_accelScale</a></div><div class="ttdeci">float _accelScale</div><div class="ttdoc">Échelle de conversion des données brutes en accélération : 1 m/s² = 100 LSB.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00141">imu.ino:141</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00141">_accelScale</a>, <a class="el" href="imu_8ino_source.html#l00132">g_acceleration_x_bateau</a>, <a class="el" href="imu_8ino_source.html#l00135">g_acceleration_y_bateau</a>, <a class="el" href="imu_8ino_source.html#l00138">g_acceleration_z_bateau</a>, <a class="el" href="imu_8ino_source.html#l00382">getAcceleroX()</a>, <a class="el" href="imu_8ino_source.html#l00424">getAcceleroY()</a>, <a class="el" href="imu_8ino_source.html#l00465">getAcceleroZ()</a>, <a class="el" href="imu_8ino_source.html#l00262">getBearing()</a>, <a class="el" href="imu_8ino_source.html#l00304">getPitch()</a>, <a class="el" href="imu_8ino_source.html#l00343">getRoll()</a>, et <a class="el" href="imu_8ino_source.html#l00239">isCalibrationOk()</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="imu_8ino_afe461d27b9c48d5921c00d521181f12f_cgraph.svg" width="215" height="332"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a4fc01d736fe50cf5b977f755b675f11d" name="a4fc01d736fe50cf5b977f755b675f11d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc01d736fe50cf5b977f755b675f11d">&#9670;&#160;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les interfaces de communication série et I2C. </p>
+<p>Cette fonction configure :</p><ul>
+<li>Le port série à 9600 bauds pour l'affichage dans le moniteur série.</li>
+<li>La communication I2C avec le capteur CMPS12.</li>
+</ul>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00158">158</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>             {</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>  <span class="comment">// Initialize the serial port to the User</span></div>
+<div class="line"><span class="lineno">  161</span>  <span class="comment">// Set this up early in the code, so the User sees all messages</span></div>
+<div class="line"><span class="lineno">  162</span>  Serial.begin(9600);</div>
+<div class="line"><span class="lineno">  163</span>  pinMode(LED_BUILTIN, OUTPUT);</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>  <span class="comment">// Initialize i2c network</span></div>
+<div class="line"><span class="lineno">  166</span>  Wire.begin();</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>  <a class="code hl_variable" href="#a475347ca1760bf7296225ad64632147e">calibrationOk</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>}</div>
+<div class="ttc" id="aimu_8ino_html_a475347ca1760bf7296225ad64632147e"><div class="ttname"><a href="#a475347ca1760bf7296225ad64632147e">calibrationOk</a></div><div class="ttdeci">bool calibrationOk</div><div class="ttdoc">État de la calibration du capteur : true si elle est réussie.</div><div class="ttdef"><b>Definition</b> <a href="imu_8ino_source.html#l00144">imu.ino:144</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Références <a class="el" href="imu_8ino_source.html#l00144">calibrationOk</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="addca3d8fc0e85b82c2ad91b7c48e8607" name="addca3d8fc0e85b82c2ad91b7c48e8607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addca3d8fc0e85b82c2ad91b7c48e8607">&#9670;&#160;</a></span>_accelScale</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float _accelScale = 1.0f / 100.f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Échelle de conversion des données brutes en accélération : 1 m/s² = 100 LSB. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00141">141</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+
+</div>
+</div>
+<a id="a91c120f16cf304879a5c8d38d1ab3cca" name="a91c120f16cf304879a5c8d38d1ab3cca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91c120f16cf304879a5c8d38d1ab3cca">&#9670;&#160;</a></span>_bearing</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _bearing</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cap (bearing) brut lu depuis le capteur, en dixièmes de degré (0–3599) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00111">111</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00262">getBearing()</a>.</p>
+
+</div>
+</div>
+<a id="a54d50bad69d20fd3ad9841dd3e7f6c48" name="a54d50bad69d20fd3ad9841dd3e7f6c48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54d50bad69d20fd3ad9841dd3e7f6c48">&#9670;&#160;</a></span>_byteHigh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte _byteHigh</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Octet de poids fort d’une valeur sur 16 bits. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00120">120</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00382">getAcceleroX()</a>, <a class="el" href="imu_8ino_source.html#l00424">getAcceleroY()</a>, <a class="el" href="imu_8ino_source.html#l00465">getAcceleroZ()</a>, <a class="el" href="imu_8ino_source.html#l00262">getBearing()</a>, <a class="el" href="imu_8ino_source.html#l00509">getMagnetX()</a>, <a class="el" href="imu_8ino_source.html#l00552">getMagnetY()</a>, et <a class="el" href="imu_8ino_source.html#l00595">getMagnetZ()</a>.</p>
+
+</div>
+</div>
+<a id="a34e5830fb62769da02778d89e63da261" name="a34e5830fb62769da02778d89e63da261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34e5830fb62769da02778d89e63da261">&#9670;&#160;</a></span>_byteLow</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte _byteLow</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Octet de poids faible d’une valeur sur 16 bits. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00123">123</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00382">getAcceleroX()</a>, <a class="el" href="imu_8ino_source.html#l00424">getAcceleroY()</a>, <a class="el" href="imu_8ino_source.html#l00465">getAcceleroZ()</a>, <a class="el" href="imu_8ino_source.html#l00262">getBearing()</a>, <a class="el" href="imu_8ino_source.html#l00509">getMagnetX()</a>, <a class="el" href="imu_8ino_source.html#l00552">getMagnetY()</a>, et <a class="el" href="imu_8ino_source.html#l00595">getMagnetZ()</a>.</p>
+
+</div>
+</div>
+<a id="af41ebb573796ffb56a6511ce053d89f5" name="af41ebb573796ffb56a6511ce053d89f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af41ebb573796ffb56a6511ce053d89f5">&#9670;&#160;</a></span>_fine</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte _fine</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Valeur fine de l’angle (précision supplémentaire du cap) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00117">117</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+</div>
+</div>
+<a id="a660177f3ca1839395481776268a7e7d7" name="a660177f3ca1839395481776268a7e7d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a660177f3ca1839395481776268a7e7d7">&#9670;&#160;</a></span>_pitch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char _pitch</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Valeur du tangage (pitch), exprimée en degrés signés (-90 à +90) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00126">126</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00304">getPitch()</a>.</p>
+
+</div>
+</div>
+<a id="a7abf44986398977320add9c1f08a5f3c" name="a7abf44986398977320add9c1f08a5f3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7abf44986398977320add9c1f08a5f3c">&#9670;&#160;</a></span>_roll</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char _roll</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Valeur du roulis (roll), exprimée en degrés signés (-90 à +90) </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00129">129</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00343">getRoll()</a>.</p>
+
+</div>
+</div>
+<a id="a475347ca1760bf7296225ad64632147e" name="a475347ca1760bf7296225ad64632147e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a475347ca1760bf7296225ad64632147e">&#9670;&#160;</a></span>calibrationOk</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool calibrationOk = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>État de la calibration du capteur : true si elle est réussie. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00144">144</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00158">setup()</a>.</p>
+
+</div>
+</div>
+<a id="aacba609411591be29de17c7003311877" name="aacba609411591be29de17c7003311877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacba609411591be29de17c7003311877">&#9670;&#160;</a></span>g_acceleration_x_bateau</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float g_acceleration_x_bateau = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accélération sur l’axe X du bateau, en m/s² </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00132">132</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+
+</div>
+</div>
+<a id="a43e79b1e6b00d3d58452c6ca31250f90" name="a43e79b1e6b00d3d58452c6ca31250f90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43e79b1e6b00d3d58452c6ca31250f90">&#9670;&#160;</a></span>g_acceleration_y_bateau</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float g_acceleration_y_bateau = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accélération sur l’axe Y du bateau, en m/s² </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00135">135</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+
+</div>
+</div>
+<a id="a72432cbd71c2e9c8e99908978d1eb474" name="a72432cbd71c2e9c8e99908978d1eb474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72432cbd71c2e9c8e99908978d1eb474">&#9670;&#160;</a></span>g_acceleration_z_bateau</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float g_acceleration_z_bateau = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accélération sur l’axe Z du bateau, en m/s² </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00138">138</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00183">loop()</a>.</p>
+
+</div>
+</div>
+<a id="a061270f4e92f9086ca193d5a44e1a524" name="a061270f4e92f9086ca193d5a44e1a524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a061270f4e92f9086ca193d5a44e1a524">&#9670;&#160;</a></span>nReceived</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nReceived</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nombre d’octets reçus lors de la lecture I2C. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="imu_8ino_source.html#l00114">114</a> du fichier <a class="el" href="imu_8ino_source.html">imu.ino</a>.</p>
+
+<p class="reference">Référencé par <a class="el" href="imu_8ino_source.html#l00382">getAcceleroX()</a>, <a class="el" href="imu_8ino_source.html#l00424">getAcceleroY()</a>, <a class="el" href="imu_8ino_source.html#l00465">getAcceleroZ()</a>, <a class="el" href="imu_8ino_source.html#l00262">getBearing()</a>, <a class="el" href="imu_8ino_source.html#l00509">getMagnetX()</a>, <a class="el" href="imu_8ino_source.html#l00552">getMagnetY()</a>, <a class="el" href="imu_8ino_source.html#l00595">getMagnetZ()</a>, <a class="el" href="imu_8ino_source.html#l00304">getPitch()</a>, et <a class="el" href="imu_8ino_source.html#l00343">getRoll()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="imu_8ino.html">imu.ino</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

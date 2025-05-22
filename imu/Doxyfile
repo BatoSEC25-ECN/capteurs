@@ -1,0 +1,55 @@
+#---------------------------------------------------------------------------
+# Projet Doxygen pour imu.ino
+#---------------------------------------------------------------------------
+
+PROJECT_NAME           = "IMU Bateau Autonome"
+PROJECT_BRIEF          = "Lecture du cap et du roulis via le capteur CMPS12"
+PROJECT_NUMBER         = "v1.0"
+OUTPUT_DIRECTORY       = doc
+CREATE_SUBDIRS         = NO
+
+OUTPUT_LANGUAGE        = French
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_LOCAL_METHODS  = YES
+RECURSIVE              = NO
+
+INPUT                  = imu.ino mainpage.dox
+FILE_PATTERNS          = *.ino *.h *.cpp
+EXTENSION_MAPPING      = ino=C++
+INPUT_ENCODING         = UTF-8
+
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_COLORSTYLE_HUE    = 220
+GENERATE_LATEX         = NO
+GENERATE_MAN           = NO
+GENERATE_RTF           = NO
+
+# Graphes UML (nécessite Graphviz)
+HAVE_DOT               = YES
+DOT_IMAGE_FORMAT       = svg
+CLASS_DIAGRAMS         = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+UML_LOOK               = YES
+
+SHOW_FILES             = YES
+SHOW_NAMESPACES        = YES
+INLINE_SOURCES         = YES
+SOURCE_BROWSER         = YES
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+# Documentation des macros, defines, constantes
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = NO
+
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_NO_PARAMDOC       = YES

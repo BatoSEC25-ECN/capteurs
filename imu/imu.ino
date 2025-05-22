@@ -31,6 +31,7 @@
 // England and Wales, without regard to its conflict of law provisions.
 
 
+///< @brief Bibliothèque Arduino pour la communication I2C
 #include <Wire.h>
 
 
