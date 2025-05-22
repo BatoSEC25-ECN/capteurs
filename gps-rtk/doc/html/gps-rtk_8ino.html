@@ -1,0 +1,774 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet GPS RTK Arduino: Référence du fichier gps-rtk.ino</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projet GPS RTK Arduino
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('gps-rtk_8ino.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier gps-rtk.ino</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Code de lecture de position GPS haute précision avec le module u-blox ZED-F9P.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;Wire.h&gt;</code><br />
+<code>#include &quot;SparkFun_Ublox_Arduino_Library.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de gps-rtk.ino:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="gps-rtk_8ino__incl.svg" width="264" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aec4f79b539c7755e554857a38f98cb85" id="r_aec4f79b539c7755e554857a38f98cb85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec4f79b539c7755e554857a38f98cb85">XBEE_SERIAL</a>&#160;&#160;&#160;Serial2</td></tr>
+<tr class="memdesc:aec4f79b539c7755e554857a38f98cb85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface série utilisée pour le module XBee.  <br /></td></tr>
+<tr class="separator:aec4f79b539c7755e554857a38f98cb85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7125fc8f3df24a2db8e074983206b054" id="r_a7125fc8f3df24a2db8e074983206b054"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7125fc8f3df24a2db8e074983206b054">XBEE_BAUD</a>&#160;&#160;&#160;115200</td></tr>
+<tr class="memdesc:a7125fc8f3df24a2db8e074983206b054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vitesse de transmission série pour le XBee (en bauds)  <br /></td></tr>
+<tr class="separator:a7125fc8f3df24a2db8e074983206b054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8fb7d5aecd38e0e7d6106a400e10388" id="r_ab8fb7d5aecd38e0e7d6106a400e10388"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8fb7d5aecd38e0e7d6106a400e10388">PRINT_PERIOD</a>&#160;&#160;&#160;1000</td></tr>
+<tr class="memdesc:ab8fb7d5aecd38e0e7d6106a400e10388"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intervalle d’affichage des données (en millisecondes)  <br /></td></tr>
+<tr class="separator:ab8fb7d5aecd38e0e7d6106a400e10388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade85c90e62466fb710745269aa4ea905" id="r_ade85c90e62466fb710745269aa4ea905"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade85c90e62466fb710745269aa4ea905">RTCM_MAX_MSG</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="memdesc:ade85c90e62466fb710745269aa4ea905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille maximale d’une trame RTCM.  <br /></td></tr>
+<tr class="separator:ade85c90e62466fb710745269aa4ea905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2783f46f19a12d8bc11d292d996e0e54" id="r_a2783f46f19a12d8bc11d292d996e0e54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2783f46f19a12d8bc11d292d996e0e54">RTCM_MAX_LEN</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="memdesc:a2783f46f19a12d8bc11d292d996e0e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longueur maximale d’un message RTCM (sécurité)  <br /></td></tr>
+<tr class="separator:a2783f46f19a12d8bc11d292d996e0e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:acf067a9f09c2b2135f1a80d61e5eb253" id="r_acf067a9f09c2b2135f1a80d61e5eb253"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf067a9f09c2b2135f1a80d61e5eb253">ParserState</a> { <a class="el" href="#acf067a9f09c2b2135f1a80d61e5eb253a8a635096faf9227423bbd503096d0fd4">WAIT_FOR_D3</a>
+, <a class="el" href="#acf067a9f09c2b2135f1a80d61e5eb253ae13a3dad2960c0f20b37664e972aa2f8">READ_LEN_HI</a>
+, <a class="el" href="#acf067a9f09c2b2135f1a80d61e5eb253ada1c2e29ea639ca7b9220f98572050bd">READ_LEN_LO</a>
+, <a class="el" href="#acf067a9f09c2b2135f1a80d61e5eb253a2a109aee766f324b7e2a8f4de6bae7da">READ_PAYLOAD</a>
+ }</td></tr>
+<tr class="memdesc:acf067a9f09c2b2135f1a80d61e5eb253"><td class="mdescLeft">&#160;</td><td class="mdescRight">États du parseur RTCM pour détecter les trames complètes.  <a href="#acf067a9f09c2b2135f1a80d61e5eb253">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acf067a9f09c2b2135f1a80d61e5eb253"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d" id="r_a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
+<tr class="memdesc:a4fc01d736fe50cf5b977f755b675f11d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les interfaces de communication et configure le module GNSS u-blox.  <br /></td></tr>
+<tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
+<tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95b94226d93e08c165b8cc4f563b0654" id="r_a95b94226d93e08c165b8cc4f563b0654"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95b94226d93e08c165b8cc4f563b0654">printRTCMType</a> (const uint8_t *buf, size_t len)</td></tr>
+<tr class="memdesc:a95b94226d93e08c165b8cc4f563b0654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extrait et affiche le type d’un message RTCM à partir d’un buffer.  <br /></td></tr>
+<tr class="separator:a95b94226d93e08c165b8cc4f563b0654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a831b66480e4e5432decb1348b965b73f" id="r_a831b66480e4e5432decb1348b965b73f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a831b66480e4e5432decb1348b965b73f">resetRTCMSeen</a> ()</td></tr>
+<tr class="memdesc:a831b66480e4e5432decb1348b965b73f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise le suivi des messages RTCM reçus.  <br /></td></tr>
+<tr class="separator:a831b66480e4e5432decb1348b965b73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab31519e37c1e1f231d32e0eb900ff6e8" id="r_ab31519e37c1e1f231d32e0eb900ff6e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab31519e37c1e1f231d32e0eb900ff6e8">printRTCMStatus</a> ()</td></tr>
+<tr class="memdesc:ab31519e37c1e1f231d32e0eb900ff6e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l’état actuel des messages RTCM observés.  <br /></td></tr>
+<tr class="separator:ab31519e37c1e1f231d32e0eb900ff6e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6bc86ed5053afa73e91758316ccf979" id="r_ae6bc86ed5053afa73e91758316ccf979"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6bc86ed5053afa73e91758316ccf979">parseRTCMFrame</a> ()</td></tr>
+<tr class="memdesc:ae6bc86ed5053afa73e91758316ccf979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse les trames RTCM reçues via la liaison série XBee.  <br /></td></tr>
+<tr class="separator:ae6bc86ed5053afa73e91758316ccf979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a344ef780db52021fe4a672eb4ec60b88" id="r_a344ef780db52021fe4a672eb4ec60b88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a344ef780db52021fe4a672eb4ec60b88">printRTCMType</a> (const uint8_t *buffer, uint16_t len)</td></tr>
+<tr class="separator:a344ef780db52021fe4a672eb4ec60b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03602ce92e1383680105a972d99b4cb6" id="r_a03602ce92e1383680105a972d99b4cb6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03602ce92e1383680105a972d99b4cb6">isUsefulRTCMType</a> (uint16_t type)</td></tr>
+<tr class="separator:a03602ce92e1383680105a972d99b4cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2140125e433a0da806ecaeb65c90f95" id="r_ab2140125e433a0da806ecaeb65c90f95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2140125e433a0da806ecaeb65c90f95">updateRTCMTypeReceived</a> (uint16_t type)</td></tr>
+<tr class="separator:ab2140125e433a0da806ecaeb65c90f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a05411c44853ba6460bdea6a87f236cae" id="r_a05411c44853ba6460bdea6a87f236cae"><td class="memItemLeft" align="right" valign="top">SFE_UBLOX_GPS&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05411c44853ba6460bdea6a87f236cae">myGPS</a></td></tr>
+<tr class="memdesc:a05411c44853ba6460bdea6a87f236cae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer local pour limiter la fréquence d’interrogation I2C.  <br /></td></tr>
+<tr class="separator:a05411c44853ba6460bdea6a87f236cae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53495b306a5bb6aaee601d36f76b8313" id="r_a53495b306a5bb6aaee601d36f76b8313"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53495b306a5bb6aaee601d36f76b8313">lastTime</a> = 0</td></tr>
+<tr class="memdesc:a53495b306a5bb6aaee601d36f76b8313"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer local pour limiter la fréquence d’interrogation I2C.  <br /></td></tr>
+<tr class="separator:a53495b306a5bb6aaee601d36f76b8313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363af0cdf5906fba7ba02f4e89924ae6" id="r_a363af0cdf5906fba7ba02f4e89924ae6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a363af0cdf5906fba7ba02f4e89924ae6">rtcmSeen</a> [1300] = {false}</td></tr>
+<tr class="memdesc:a363af0cdf5906fba7ba02f4e89924ae6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau de suivi des types RTCM reçus (indexés par type)  <br /></td></tr>
+<tr class="separator:a363af0cdf5906fba7ba02f4e89924ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb1b32201d08074345e406d061ba817b" id="r_acb1b32201d08074345e406d061ba817b"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb1b32201d08074345e406d061ba817b">lastRTCMReset</a> = 0</td></tr>
+<tr class="memdesc:acb1b32201d08074345e406d061ba817b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Horodatage de la dernière réinitialisation du suivi RTCM.  <br /></td></tr>
+<tr class="separator:acb1b32201d08074345e406d061ba817b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae05880c2fa2aa8cbae30ca449de21753" id="r_ae05880c2fa2aa8cbae30ca449de21753"><td class="memItemLeft" align="right" valign="top">const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae05880c2fa2aa8cbae30ca449de21753">requiredRTCM</a> [] = {1006, 1074, 1087}</td></tr>
+<tr class="memdesc:ae05880c2fa2aa8cbae30ca449de21753"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liste des types RTCM requis pour une correction GNSS complète.  <br /></td></tr>
+<tr class="separator:ae05880c2fa2aa8cbae30ca449de21753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab01d69be4189b20eee0e0acbb012bc5c" id="r_ab01d69be4189b20eee0e0acbb012bc5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab01d69be4189b20eee0e0acbb012bc5c">requiredReceived</a> [sizeof(<a class="el" href="#ae05880c2fa2aa8cbae30ca449de21753">requiredRTCM</a>)/sizeof(uint16_t)] = {false}</td></tr>
+<tr class="memdesc:ab01d69be4189b20eee0e0acbb012bc5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique quels types requis ont été reçus.  <br /></td></tr>
+<tr class="separator:ab01d69be4189b20eee0e0acbb012bc5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab065c657f95e843c54f924ae611ec9d" id="r_aab065c657f95e843c54f924ae611ec9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab065c657f95e843c54f924ae611ec9d">allRequiredReceived</a> = false</td></tr>
+<tr class="memdesc:aab065c657f95e843c54f924ae611ec9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si tous les types requis ont été reçus.  <br /></td></tr>
+<tr class="separator:aab065c657f95e843c54f924ae611ec9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a319c5a88c63497030b921583178e173b" id="r_a319c5a88c63497030b921583178e173b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a319c5a88c63497030b921583178e173b">seen1005</a> = false</td></tr>
+<tr class="memdesc:a319c5a88c63497030b921583178e173b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le type RTCM 1005 a été vu.  <br /></td></tr>
+<tr class="separator:a319c5a88c63497030b921583178e173b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc8eaaa3ce120c2d5810e415d9b60879" id="r_adc8eaaa3ce120c2d5810e415d9b60879"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc8eaaa3ce120c2d5810e415d9b60879">seen1074</a> = false</td></tr>
+<tr class="memdesc:adc8eaaa3ce120c2d5810e415d9b60879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le type RTCM 1074 a été vu.  <br /></td></tr>
+<tr class="separator:adc8eaaa3ce120c2d5810e415d9b60879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ddc26a3e12e5870d97c25d60a6cfcd2" id="r_a2ddc26a3e12e5870d97c25d60a6cfcd2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ddc26a3e12e5870d97c25d60a6cfcd2">seen1084</a> = false</td></tr>
+<tr class="memdesc:a2ddc26a3e12e5870d97c25d60a6cfcd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le type RTCM 1084 a été vu.  <br /></td></tr>
+<tr class="separator:a2ddc26a3e12e5870d97c25d60a6cfcd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac360f40ed3c0d233fd383cd138a1c18c" id="r_ac360f40ed3c0d233fd383cd138a1c18c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac360f40ed3c0d233fd383cd138a1c18c">seen1094</a> = false</td></tr>
+<tr class="memdesc:ac360f40ed3c0d233fd383cd138a1c18c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le type RTCM 1094 a été vu.  <br /></td></tr>
+<tr class="separator:ac360f40ed3c0d233fd383cd138a1c18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12dfb3d7fe344f63be145e80cdd58975" id="r_a12dfb3d7fe344f63be145e80cdd58975"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12dfb3d7fe344f63be145e80cdd58975">seen1230</a> = false</td></tr>
+<tr class="memdesc:a12dfb3d7fe344f63be145e80cdd58975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le type RTCM 1230 a été vu.  <br /></td></tr>
+<tr class="separator:a12dfb3d7fe344f63be145e80cdd58975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Code de lecture de position GPS haute précision avec le module u-blox ZED-F9P. </p>
+<p>Ce programme lit les données GNSS (latitude, longitude, altitude, précision) via I2C depuis un module compatible u-blox ZED-F9P, avec communication série vers un module XBee pour le traitement RTCM. Il traite les messages RTCM reçus et vérifie si tous les types nécessaires sont reçus pour une solution RTK fixe.</p>
+<ul>
+<li>Utilise la bibliothèque SparkFun u-blox Arduino GNSS</li>
+<li>Interagit avec des trames RTCM pour la correction différentielle GNSS</li>
+<li>Affiche les données sur le moniteur série à 115200 bauds</li>
+<li>Vérifie et affiche le type de solution GNSS (Fix, RTK Float, RTK Fixed) </li>
+</ul>
+</div><h2 class="groupheader">Documentation des macros</h2>
+<a id="ab8fb7d5aecd38e0e7d6106a400e10388" name="ab8fb7d5aecd38e0e7d6106a400e10388"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8fb7d5aecd38e0e7d6106a400e10388">&#9670;&#160;</a></span>PRINT_PERIOD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRINT_PERIOD&#160;&#160;&#160;1000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Intervalle d’affichage des données (en millisecondes) </p>
+
+</div>
+</div>
+<a id="a2783f46f19a12d8bc11d292d996e0e54" name="a2783f46f19a12d8bc11d292d996e0e54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2783f46f19a12d8bc11d292d996e0e54">&#9670;&#160;</a></span>RTCM_MAX_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RTCM_MAX_LEN&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Longueur maximale d’un message RTCM (sécurité) </p>
+
+</div>
+</div>
+<a id="ade85c90e62466fb710745269aa4ea905" name="ade85c90e62466fb710745269aa4ea905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade85c90e62466fb710745269aa4ea905">&#9670;&#160;</a></span>RTCM_MAX_MSG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RTCM_MAX_MSG&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Taille maximale d’une trame RTCM. </p>
+
+</div>
+</div>
+<a id="a7125fc8f3df24a2db8e074983206b054" name="a7125fc8f3df24a2db8e074983206b054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7125fc8f3df24a2db8e074983206b054">&#9670;&#160;</a></span>XBEE_BAUD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XBEE_BAUD&#160;&#160;&#160;115200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vitesse de transmission série pour le XBee (en bauds) </p>
+
+</div>
+</div>
+<a id="aec4f79b539c7755e554857a38f98cb85" name="aec4f79b539c7755e554857a38f98cb85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec4f79b539c7755e554857a38f98cb85">&#9670;&#160;</a></span>XBEE_SERIAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XBEE_SERIAL&#160;&#160;&#160;Serial2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interface série utilisée pour le module XBee. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a id="acf067a9f09c2b2135f1a80d61e5eb253" name="acf067a9f09c2b2135f1a80d61e5eb253"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf067a9f09c2b2135f1a80d61e5eb253">&#9670;&#160;</a></span>ParserState</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#acf067a9f09c2b2135f1a80d61e5eb253">ParserState</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>États du parseur RTCM pour détecter les trames complètes. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="acf067a9f09c2b2135f1a80d61e5eb253a8a635096faf9227423bbd503096d0fd4" name="acf067a9f09c2b2135f1a80d61e5eb253a8a635096faf9227423bbd503096d0fd4"></a>WAIT_FOR_D3&#160;</td><td class="fielddoc"><p>Attente du préambule (0xD3) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acf067a9f09c2b2135f1a80d61e5eb253ae13a3dad2960c0f20b37664e972aa2f8" name="acf067a9f09c2b2135f1a80d61e5eb253ae13a3dad2960c0f20b37664e972aa2f8"></a>READ_LEN_HI&#160;</td><td class="fielddoc"><p>Lecture du MSB de la longueur. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acf067a9f09c2b2135f1a80d61e5eb253ada1c2e29ea639ca7b9220f98572050bd" name="acf067a9f09c2b2135f1a80d61e5eb253ada1c2e29ea639ca7b9220f98572050bd"></a>READ_LEN_LO&#160;</td><td class="fielddoc"><p>Lecture du LSB de la longueur. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="acf067a9f09c2b2135f1a80d61e5eb253a2a109aee766f324b7e2a8f4de6bae7da" name="acf067a9f09c2b2135f1a80d61e5eb253a2a109aee766f324b7e2a8f4de6bae7da"></a>READ_PAYLOAD&#160;</td><td class="fielddoc"><p>Lecture du reste de la trame. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a03602ce92e1383680105a972d99b4cb6" name="a03602ce92e1383680105a972d99b4cb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03602ce92e1383680105a972d99b4cb6">&#9670;&#160;</a></span>isUsefulRTCMType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isUsefulRTCMType </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="gps-rtk_8ino_a03602ce92e1383680105a972d99b4cb6_icgraph.svg" width="324" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="afe461d27b9c48d5921c00d521181f12f" name="afe461d27b9c48d5921c00d521181f12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe461d27b9c48d5921c00d521181f12f">&#9670;&#160;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6bc86ed5053afa73e91758316ccf979" name="ae6bc86ed5053afa73e91758316ccf979"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6bc86ed5053afa73e91758316ccf979">&#9670;&#160;</a></span>parseRTCMFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void parseRTCMFrame </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parse les trames RTCM reçues via la liaison série XBee. </p>
+<p>Cette fonction lit les octets reçus depuis <code>XBEE_SERIAL</code>, les assemble dans un buffer RTCM, et détecte automatiquement le début (<code>0xD3</code>), la longueur et la fin de chaque trame.</p>
+<p>Une fois une trame complète détectée :</p><ul>
+<li>Elle extrait le type RTCM à partir des octets de l’en-tête.</li>
+<li>Elle appelle <code><a class="el" href="#ab2140125e433a0da806ecaeb65c90f95">updateRTCMTypeReceived()</a></code> pour mettre à jour les types requis.</li>
+<li>Si la trame est considérée comme utile, elle est transmise au module GNSS via <code>myGPS.pushRawData()</code>.</li>
+</ul>
+<p>Toutes les 5 secondes, la fonction affiche les types RTCM reçus et réinitialise les flags via <code><a class="el" href="#ab31519e37c1e1f231d32e0eb900ff6e8" title="Affiche l’état actuel des messages RTCM observés.">printRTCMStatus()</a></code> et <code><a class="el" href="#a831b66480e4e5432decb1348b965b73f" title="Réinitialise le suivi des messages RTCM reçus.">resetRTCMSeen()</a></code>.</p>
+<dl class="section note"><dt>Note</dt><dd>Utilise un automate à 4 états : <code>WAIT_FOR_D3</code>, <code>READ_LEN_HI</code>, <code>READ_LEN_LO</code>, <code>READ_PAYLOAD</code>. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="gps-rtk_8ino_ae6bc86ed5053afa73e91758316ccf979_cgraph.svg" width="371" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ab31519e37c1e1f231d32e0eb900ff6e8" name="ab31519e37c1e1f231d32e0eb900ff6e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab31519e37c1e1f231d32e0eb900ff6e8">&#9670;&#160;</a></span>printRTCMStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printRTCMStatus </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l’état actuel des messages RTCM observés. </p>
+<p>Cette fonction affiche :</p><ul>
+<li>tous les types RTCM reçus depuis la dernière réinitialisation (<code>rtcmSeen</code>),</li>
+<li>l’état de réception des types requis (<code>requiredReceived</code>), avec des indicateurs ✅ ou ❌.</li>
+</ul>
+<p>Elle est utile pour le diagnostic de la réception des corrections GNSS.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="gps-rtk_8ino_ab31519e37c1e1f231d32e0eb900ff6e8_icgraph.svg" width="312" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a95b94226d93e08c165b8cc4f563b0654" name="a95b94226d93e08c165b8cc4f563b0654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95b94226d93e08c165b8cc4f563b0654">&#9670;&#160;</a></span>printRTCMType() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printRTCMType </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extrait et affiche le type d’un message RTCM à partir d’un buffer. </p>
+<p>Cette fonction extrait le type du message RTCM contenu dans le buffer binaire, l'affiche sur le port série, et met à jour les tableaux de suivi <code>rtcmSeen</code> et <code>requiredReceived</code>. Si tous les types requis sont reçus, elle affiche une confirmation.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Pointeur vers le buffer contenant le message RTCM. </td></tr>
+    <tr><td class="paramname">len</td><td>Longueur du buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a344ef780db52021fe4a672eb4ec60b88" name="a344ef780db52021fe4a672eb4ec60b88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a344ef780db52021fe4a672eb4ec60b88">&#9670;&#160;</a></span>printRTCMType() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printRTCMType </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a831b66480e4e5432decb1348b965b73f" name="a831b66480e4e5432decb1348b965b73f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a831b66480e4e5432decb1348b965b73f">&#9670;&#160;</a></span>resetRTCMSeen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void resetRTCMSeen </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réinitialise le suivi des messages RTCM reçus. </p>
+<p>Cette fonction remet à zéro :</p><ul>
+<li>le tableau <code>rtcmSeen[]</code> qui trace les types RTCM observés,</li>
+<li>les flags <code>requiredReceived[]</code> pour les types requis,</li>
+<li>l’indicateur global <code>allRequiredReceived</code>.</li>
+</ul>
+<p>Elle enregistre également un nouvel horodatage de réinitialisation.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="gps-rtk_8ino_a831b66480e4e5432decb1348b965b73f_icgraph.svg" width="308" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a4fc01d736fe50cf5b977f755b675f11d" name="a4fc01d736fe50cf5b977f755b675f11d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc01d736fe50cf5b977f755b675f11d">&#9670;&#160;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les interfaces de communication et configure le module GNSS u-blox. </p>
+<p>Cette fonction est exécutée une seule fois au démarrage du microcontrôleur. Elle initialise :</p><ul>
+<li>La communication série pour debug</li>
+<li>Le bus I2C pour le capteur GNSS</li>
+<li>Le port série utilisé pour le module XBee</li>
+</ul>
+<p>Elle établit la connexion avec le module GNSS u-blox via I2C, configure le type de messages (UBX uniquement) et règle la fréquence de mise à jour à 20 Hz.</p>
+<p>En cas d’échec de détection du module, la boucle reste bloquée avec un message d’erreur.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ab2140125e433a0da806ecaeb65c90f95" name="ab2140125e433a0da806ecaeb65c90f95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2140125e433a0da806ecaeb65c90f95">&#9670;&#160;</a></span>updateRTCMTypeReceived()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateRTCMTypeReceived </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>type</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="gps-rtk_8ino_ab2140125e433a0da806ecaeb65c90f95_icgraph.svg" width="371" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="aab065c657f95e843c54f924ae611ec9d" name="aab065c657f95e843c54f924ae611ec9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab065c657f95e843c54f924ae611ec9d">&#9670;&#160;</a></span>allRequiredReceived</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool allRequiredReceived = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si tous les types requis ont été reçus. </p>
+
+</div>
+</div>
+<a id="acb1b32201d08074345e406d061ba817b" name="acb1b32201d08074345e406d061ba817b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb1b32201d08074345e406d061ba817b">&#9670;&#160;</a></span>lastRTCMReset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long lastRTCMReset = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Horodatage de la dernière réinitialisation du suivi RTCM. </p>
+
+</div>
+</div>
+<a id="a53495b306a5bb6aaee601d36f76b8313" name="a53495b306a5bb6aaee601d36f76b8313"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53495b306a5bb6aaee601d36f76b8313">&#9670;&#160;</a></span>lastTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long lastTime = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Timer local pour limiter la fréquence d’interrogation I2C. </p>
+
+</div>
+</div>
+<a id="a05411c44853ba6460bdea6a87f236cae" name="a05411c44853ba6460bdea6a87f236cae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05411c44853ba6460bdea6a87f236cae">&#9670;&#160;</a></span>myGPS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SFE_UBLOX_GPS myGPS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Timer local pour limiter la fréquence d’interrogation I2C. </p>
+<p>&lt; Bibliothèque SparkFun pour modules GNSS u-blox V1.8.11 &lt; Instance de l’objet GNSS u-blox </p>
+
+</div>
+</div>
+<a id="ab01d69be4189b20eee0e0acbb012bc5c" name="ab01d69be4189b20eee0e0acbb012bc5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab01d69be4189b20eee0e0acbb012bc5c">&#9670;&#160;</a></span>requiredReceived</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool requiredReceived[sizeof(<a class="el" href="#ae05880c2fa2aa8cbae30ca449de21753">requiredRTCM</a>)/sizeof(uint16_t)] = {false}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique quels types requis ont été reçus. </p>
+
+</div>
+</div>
+<a id="ae05880c2fa2aa8cbae30ca449de21753" name="ae05880c2fa2aa8cbae30ca449de21753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae05880c2fa2aa8cbae30ca449de21753">&#9670;&#160;</a></span>requiredRTCM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t requiredRTCM[] = {1006, 1074, 1087}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Liste des types RTCM requis pour une correction GNSS complète. </p>
+
+</div>
+</div>
+<a id="a363af0cdf5906fba7ba02f4e89924ae6" name="a363af0cdf5906fba7ba02f4e89924ae6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a363af0cdf5906fba7ba02f4e89924ae6">&#9670;&#160;</a></span>rtcmSeen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool rtcmSeen[1300] = {false}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tableau de suivi des types RTCM reçus (indexés par type) </p>
+
+</div>
+</div>
+<a id="a319c5a88c63497030b921583178e173b" name="a319c5a88c63497030b921583178e173b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a319c5a88c63497030b921583178e173b">&#9670;&#160;</a></span>seen1005</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool seen1005 = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si le type RTCM 1005 a été vu. </p>
+
+</div>
+</div>
+<a id="adc8eaaa3ce120c2d5810e415d9b60879" name="adc8eaaa3ce120c2d5810e415d9b60879"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc8eaaa3ce120c2d5810e415d9b60879">&#9670;&#160;</a></span>seen1074</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool seen1074 = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si le type RTCM 1074 a été vu. </p>
+
+</div>
+</div>
+<a id="a2ddc26a3e12e5870d97c25d60a6cfcd2" name="a2ddc26a3e12e5870d97c25d60a6cfcd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ddc26a3e12e5870d97c25d60a6cfcd2">&#9670;&#160;</a></span>seen1084</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool seen1084 = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si le type RTCM 1084 a été vu. </p>
+
+</div>
+</div>
+<a id="ac360f40ed3c0d233fd383cd138a1c18c" name="ac360f40ed3c0d233fd383cd138a1c18c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac360f40ed3c0d233fd383cd138a1c18c">&#9670;&#160;</a></span>seen1094</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool seen1094 = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si le type RTCM 1094 a été vu. </p>
+
+</div>
+</div>
+<a id="a12dfb3d7fe344f63be145e80cdd58975" name="a12dfb3d7fe344f63be145e80cdd58975"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12dfb3d7fe344f63be145e80cdd58975">&#9670;&#160;</a></span>seen1230</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool seen1230 = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si le type RTCM 1230 a été vu. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="gps-rtk_8ino.html">gps-rtk.ino</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>
