@@ -1,3 +1,19 @@
+/**
+ * @file gps-rtk.ino
+ * @brief Code de lecture de position GPS haute précision avec le module u-blox ZED-F9P.
+ * 
+ * Ce programme lit les données GNSS (latitude, longitude, altitude, précision) via I2C depuis un module
+ * compatible u-blox ZED-F9P, avec communication série vers un module XBee pour le traitement RTCM.
+ * Il traite les messages RTCM reçus et vérifie si tous les types nécessaires sont reçus pour une solution RTK fixe.
+ *
+ * @details
+ * - Utilise la bibliothèque SparkFun u-blox Arduino GNSS
+ * - Interagit avec des trames RTCM pour la correction différentielle GNSS
+ * - Affiche les données sur le moniteur série à 115200 bauds
+ * - Vérifie et affiche le type de solution GNSS (Fix, RTK Float, RTK Fixed)
+ *
+ */
+
 /*
   Get the high precision geodetic solution for latitude and longitude
   By: Nathan Seidle
@@ -21,54 +37,108 @@
   Open the serial monitor at 115200 baud to see the output
 */
 
+/// @brief Timer local pour limiter la fréquence d’interrogation I2C
 #include <Wire.h> //Needed for I2C to GPS
 
+///< @brief Bibliothèque SparkFun pour modules GNSS u-blox V1.8.11
 #include "SparkFun_Ublox_Arduino_Library.h" //http://librarymanager/All#SparkFun_u-blox_GNSS
+///< @brief Instance de l’objet GNSS u-blox
 SFE_UBLOX_GPS myGPS;
 
+/// @brief Timer local pour limiter la fréquence d’interrogation I2C
 long lastTime = 0; //Simple local timer. Limits amount if I2C traffic to Ublox module.
 
 // Ajustez au besoin (port série pour XBee, débit en bauds)
+/// @brief Interface série utilisée pour le module XBee
 #define XBEE_SERIAL   Serial2
+/// @brief Vitesse de transmission série pour le XBee (en bauds)
 #define XBEE_BAUD     115200
+/// @brief Intervalle d’affichage des données (en millisecondes)
 #define PRINT_PERIOD  1000   // En millisecondes
 
 // Définir l'état du parser RTCM
+
+/**
+ * @enum ParserState
+ * @brief États du parseur RTCM pour détecter les trames complètes
+ */
 enum ParserState {
-  WAIT_FOR_D3,
-  READ_LEN_HI,
-  READ_LEN_LO,
-  READ_PAYLOAD
+  WAIT_FOR_D3,     ///< Attente du préambule (0xD3)
+  READ_LEN_HI,     ///< Lecture du MSB de la longueur
+  READ_LEN_LO,     ///< Lecture du LSB de la longueur
+  READ_PAYLOAD     ///< Lecture du reste de la trame
 };
 
 // Définir la taille maximale d’un message RTCM
+/// @brief Taille maximale d’une trame RTCM
 #define RTCM_MAX_MSG 1024
+/// @brief Longueur maximale d’un message RTCM (sécurité)
 #define RTCM_MAX_LEN 1024
 
 /////////////nouveux params////////////////
 
+/// @brief État courant du parseur RTCM
 static ParserState rtcmState = WAIT_FOR_D3;
+
+/// @brief Buffer de stockage temporaire d’une trame RTCM
 static uint8_t rtcmBuffer[RTCM_MAX_MSG];
+
+/// @brief Nombre d’octets restants à lire pour compléter la trame
 static uint16_t bytesToRead = 0;
+
+/// @brief Index courant dans le buffer RTCM
 static uint16_t idx = 0;
 
+
 // Suivi des trames RTCM reçues
+/// @brief Tableau de suivi des types RTCM reçus (indexés par type)
 bool rtcmSeen[1300] = {false};
+
+/// @brief Horodatage de la dernière réinitialisation du suivi RTCM
 unsigned long lastRTCMReset = 0;
 
 // Types critiques requis
+/// @brief Liste des types RTCM requis pour une correction GNSS complète
 const uint16_t requiredRTCM[] = {1006, 1074, 1087};
+
+/// @brief Indique quels types requis ont été reçus
 bool requiredReceived[sizeof(requiredRTCM)/sizeof(uint16_t)] = {false};
+
+/// @brief Indique si tous les types requis ont été reçus
 bool allRequiredReceived = false;
 
+/// @brief Indique si le type RTCM 1005 a été vu
 bool seen1005 = false;
+
+/// @brief Indique si le type RTCM 1074 a été vu
 bool seen1074 = false;
+
+/// @brief Indique si le type RTCM 1084 a été vu
 bool seen1084 = false;
+
+/// @brief Indique si le type RTCM 1094 a été vu
 bool seen1094 = false;
+
+/// @brief Indique si le type RTCM 1230 a été vu
 bool seen1230 = false;
 
 /////////////nouveux params////////////////
-
+/**
+ * @brief Initialise les interfaces de communication et configure le module GNSS u-blox.
+ *
+ * Cette fonction est exécutée une seule fois au démarrage du microcontrôleur.
+ * Elle initialise :
+ * - La communication série pour debug
+ * - Le bus I2C pour le capteur GNSS
+ * - Le port série utilisé pour le module XBee
+ * 
+ * Elle établit la connexion avec le module GNSS u-blox via I2C,
+ * configure le type de messages (UBX uniquement) et règle la fréquence de mise à jour à 20 Hz.
+ *
+ * En cas d’échec de détection du module, la boucle reste bloquée avec un message d’erreur.
+ *
+ * @return void
+ */
 void setup()
 {
   Serial.begin(115200);
@@ -309,6 +379,18 @@ void loop()
 //   }
 // }
 
+/**
+ * @brief Extrait et affiche le type d’un message RTCM à partir d’un buffer.
+ *
+ * Cette fonction extrait le type du message RTCM contenu dans le buffer binaire,
+ * l'affiche sur le port série, et met à jour les tableaux de suivi `rtcmSeen` et `requiredReceived`.
+ * Si tous les types requis sont reçus, elle affiche une confirmation.
+ *
+ * @param buf Pointeur vers le buffer contenant le message RTCM.
+ * @param len Longueur du buffer.
+ * @return void
+ */
+
 void printRTCMType(const uint8_t* buf, size_t len) {
   if (len < 6) return;
   uint16_t type = ((buf[3] & 0xFC) << 4) | ((buf[4] & 0xF0) >> 4);
@@ -336,6 +418,18 @@ void printRTCMType(const uint8_t* buf, size_t len) {
   }
 }
 
+/**
+ * @brief Réinitialise le suivi des messages RTCM reçus.
+ *
+ * Cette fonction remet à zéro :
+ * - le tableau `rtcmSeen[]` qui trace les types RTCM observés,
+ * - les flags `requiredReceived[]` pour les types requis,
+ * - l’indicateur global `allRequiredReceived`.
+ *
+ * Elle enregistre également un nouvel horodatage de réinitialisation.
+ *
+ * @return void
+ */
 void resetRTCMSeen() {
   for (int i = 0; i < 1300; i++) rtcmSeen[i] = false;
   for (size_t i = 0; i < sizeof(requiredRTCM)/sizeof(uint16_t); i++) requiredReceived[i] = false;
@@ -343,6 +437,18 @@ void resetRTCMSeen() {
   lastRTCMReset = millis();
 }
 
+/**
+ * @brief Affiche l’état actuel des messages RTCM observés.
+ *
+ * Cette fonction affiche :
+ * - tous les types RTCM reçus depuis la dernière réinitialisation (`rtcmSeen`),
+ * - l’état de réception des types requis (`requiredReceived`),
+ * avec des indicateurs ✅ ou ❌.
+ *
+ * Elle est utile pour le diagnostic de la réception des corrections GNSS.
+ *
+ * @return void
+ */
 void printRTCMStatus() {
   Serial.println("[RTCM Types vus récemment]");
   for (int i = 0; i < 1300; i++) {
@@ -360,6 +466,23 @@ void printRTCMStatus() {
   }
   Serial.println();
 }
+
+/**
+ * @brief Parse les trames RTCM reçues via la liaison série XBee.
+ *
+ * Cette fonction lit les octets reçus depuis `XBEE_SERIAL`, les assemble dans un buffer RTCM,
+ * et détecte automatiquement le début (`0xD3`), la longueur et la fin de chaque trame.
+ *
+ * Une fois une trame complète détectée :
+ * - Elle extrait le type RTCM à partir des octets de l’en-tête.
+ * - Elle appelle `updateRTCMTypeReceived()` pour mettre à jour les types requis.
+ * - Si la trame est considérée comme utile, elle est transmise au module GNSS via `myGPS.pushRawData()`.
+ *
+ * Toutes les 5 secondes, la fonction affiche les types RTCM reçus et réinitialise les flags via `printRTCMStatus()` et `resetRTCMSeen()`.
+ *
+ * @note Utilise un automate à 4 états : `WAIT_FOR_D3`, `READ_LEN_HI`, `READ_LEN_LO`, `READ_PAYLOAD`.
+ * @return void
+ */
 
 void parseRTCMFrame() {
   while (XBEE_SERIAL.available()) {
