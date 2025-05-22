@@ -1,3 +1,16 @@
+/**
+ * @file imu.ino
+ * @brief Lecture du cap (heading) et du roulis (roll) via le capteur CMPS12 en I2C.
+ *
+ * Ce programme interroge un capteur d’orientation CMPS12 connecté en I2C pour obtenir :
+ * - Le cap du bateau (direction vers laquelle il pointe, en degrés par rapport au nord magnétique).
+ * - Le roulis (roll), c’est-à-dire l’inclinaison latérale du bateau.
+ *
+ * Ces informations sont affichées sur le port série pour un usage en navigation embarquée.
+ */
+
+
+
 // Arduino DUE and CMPS12 compass
 // Copyright (C) 2021 https://www.roboticboat.uk
 // 65928a79-e9a1-403b-a375-b1fe84b15aa4
@@ -45,50 +58,103 @@
 //---------------------------------
 
   //Address of the CMPS12 compass on i2C
+  /// @brief Adresse I2C du capteur CMPS12
   #define _i2cAddress 0x60
+
+  /// @brief registre du statut de calibration
   #define CALIBRATION_STATUS_REG 0x1E  // Registre du statut de calibration
 
+  /// @brief Registre de contrôle du capteur (lecture/commande)
   #define CONTROL_Register 0
 
+/// @brief Registre de poids fort de l’angle de cap (2 octets)
   #define BEARING_Register 2 
+
+  /// @brief Registre contenant le tangage (pitch), en degrés signés (-90 à +90)
   #define PITCH_Register 4 
+
+  /// @brief Registre contenant le roulis (roll), en degrés signés (-90 à +90)
   #define ROLL_Register 5
 
+
+/// @brief Registre de l’axe X du magnétomètre (2 octets)
   #define MAGNET_X_Register  6
+
+/// @brief Registre de l’axe Y du magnétomètre (2 octets)
   #define MAGNET_Y_Register  8
+
+/// @brief Registre de l’axe Z du magnétomètre (2 octets)
   #define MAGNET_Z_Register 10
 
+/// @brief Registre de l’axe X de l’accéléromètre (2 octets)
   #define ACCELERO_X_Register 12
+  /// @brief Registre de l’axe Y de l’accéléromètre (2 octets)
   #define ACCELERO_Y_Register 14
+  /// @brief Registre de l’axe XZde l’accéléromètre (2 octets)
   #define ACCELERO_Z_Register 16
 
+/// @brief Registre de l’axe X du gyroscope (2 octets)
   #define _Register_GYRO_X 18
+  /// @brief Registre de l’axe Y du gyroscope (2 octets)
   #define _Register_GYRO_Y 20
+  /// @brief Registre de l’axe Z du gyroscope (2 octets)
   #define _Register_GYRO_Z 22
 
+/// @brief Constante représentant la lecture d’un seul octet
   #define ONE_BYTE 1
+/// @brief Constante représentant la lecture de deux octets
   #define TWO_BYTES 2
 
 //---------------------------------
 
+  /// @brief Cap (bearing) brut lu depuis le capteur, en dixièmes de degré (0–3599)
+int _bearing;
 
-  int _bearing;
-  int nReceived;
-  byte _fine;
-  byte _byteHigh;
-  byte _byteLow;
-  char _pitch;
-  char _roll;
+/// @brief Nombre d’octets reçus lors de la lecture I2C
+int nReceived;
 
-  float g_acceleration_x_bateau = 0;
-  float g_acceleration_y_bateau = 0;
-  float g_acceleration_z_bateau = 0;
-  float _accelScale = 1.0f/100.f; // 1 m/s^2 = 100 LSB
+/// @brief Valeur fine de l’angle (précision supplémentaire du cap)
+byte _fine;
 
-  bool calibrationOk = false;
+/// @brief Octet de poids fort d’une valeur sur 16 bits
+byte _byteHigh;
+
+/// @brief Octet de poids faible d’une valeur sur 16 bits
+byte _byteLow;
+
+/// @brief Valeur du tangage (pitch), exprimée en degrés signés (-90 à +90)
+char _pitch;
+
+/// @brief Valeur du roulis (roll), exprimée en degrés signés (-90 à +90)
+char _roll;
+
+/// @brief Accélération sur l’axe X du bateau, en m/s²
+float g_acceleration_x_bateau = 0;
+
+/// @brief Accélération sur l’axe Y du bateau, en m/s²
+float g_acceleration_y_bateau = 0;
+
+/// @brief Accélération sur l’axe Z du bateau, en m/s²
+float g_acceleration_z_bateau = 0;
+
+/// @brief Échelle de conversion des données brutes en accélération : 1 m/s² = 100 LSB
+float _accelScale = 1.0f / 100.f;
+
+/// @brief État de la calibration du capteur : true si elle est réussie
+bool calibrationOk = false;
 
 //---------------------------------
-    
+
+/**
+ * @brief Initialise les interfaces de communication série et I2C.
+ *
+ * Cette fonction configure :
+ * - Le port série à 9600 bauds pour l'affichage dans le moniteur série.
+ * - La communication I2C avec le capteur CMPS12.
+ *
+ * @return void
+ */
+
 void setup() {
 
   // Initialize the serial port to the User
@@ -103,20 +169,27 @@ void setup() {
 
 }
 
+
+
+/**
+ * @brief Boucle principale du programme.
+ *
+ * Appelle les fonctions de lecture du cap et du roll, puis affiche les valeurs
+ * obtenues sur le moniteur série. Répète l’opération toutes les 500 ms.
+ *
+ * @return void
+ */
+
 void loop() {
 
-  // Vérifier le statut de calibration au démarrage
-  //Serial.println(calibrationOk);
-  while(!calibrationOk)
-  {
-      Serial.print("calibration en cours...");
-      calibrationOk = calibration();
-  }
 
-  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-  delay(500);                      // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-  delay(500);
+  if(isCalibrationOk())
+  {
+    digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+    delay(500);                      // wait for a second
+    digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+    delay(500);
+  }
   
   // read the compass
   
@@ -135,7 +208,7 @@ void loop() {
   
   Serial.print("$CMP, relèvement :");
   Serial.println(g_cap_actuel_bateau);
-  Serial.print(" , tangage: ");
+  /*Serial.print(" , tangage: ");
   Serial.print(g_gite_bateau); 
   Serial.print(" , roulis :");
   Serial.print(roll);
@@ -147,41 +220,45 @@ void loop() {
   Serial.print(g_acceleration_y_bateau,4); 
   Serial.print(" , z :");
   Serial.print(g_acceleration_z_bateau,4);
-  Serial.print(" m/s^2,");
+  Serial.print(" m/s^2,");*/
 
   delay(100);
 }
 
-bool calibration()
-{
+/**
+ * @brief Vérifie si la calibration du capteur CMPS12 est terminée avec succès.
+ *
+ * Cette fonction interroge le registre de statut de calibration du CMPS12 via I2C.
+ * Elle considère la calibration comme réussie si le registre retourne la valeur `0xFF`.
+ *
+ * @note Cette vérification est cruciale avant d’utiliser les données d’orientation du capteur.
+ *
+ * @return true si la calibration est complète (`0xFF`), false sinon (erreur ou incomplète).
+ */
+
+bool isCalibrationOk() {
     Wire.beginTransmission(_i2cAddress);
     Wire.write(CALIBRATION_STATUS_REG);
     Wire.endTransmission();
-    bool calibration_ok = false;
 
     Wire.requestFrom(_i2cAddress, 1);
     if (Wire.available()) {
         uint8_t status = Wire.read();
-        Serial.print("Statut de calibration : 0x");
-        Serial.println(status, HEX);
-
-        if (status == 0xFF) {
-            Serial.println("Calibration réussie !");
-            calibration_ok = true;
-        } else if (status == 0x00) {
-            Serial.println("Calibration incomplète, veuillez recalibrer.");
-        } else {
-            Serial.println("Calibration partielle. Faites tourner le capteur dans toutes les directions.");
-        }
-    } else {
-        Serial.println("Impossible de lire le statut de calibration.");
+        return (status == 0xFF); // Calibration complète uniquement
     }
-
-    delay(5000);
-
-    return calibration_ok;
+    return false; // Erreur de lecture
 }
 
+/**
+ * @brief Lit le cap (heading) du capteur CMPS12.
+ *
+ * Cette fonction lit les deux octets représentant l'angle d’orientation
+ * du capteur CMPS12. L’angle est renvoyé en dixièmes de degrés.
+ *
+ * @note Si la lecture échoue (capteur non disponible), retourne -1.
+ *
+ * @return int Cap en dixièmes de degrés (ex: 1234 = 123.4°), ou -1 en cas d’échec.
+ */
 int16_t getBearing()
 {
   // Begin communication with CMPS12
@@ -212,6 +289,18 @@ int16_t getBearing()
   return _bearing;
 }
 
+
+/**
+ * @brief Lit l’angle de tangage (pitch) depuis le capteur CMPS12.
+ *
+ * Cette fonction communique avec le registre de tangage du CMPS12 via I2C.
+ * Elle lit un octet signé représentant l’inclinaison avant/arrière du bateau
+ * sur l’axe longitudinal (pitch), exprimée en degrés dans l’intervalle [-90, +90].
+ *
+ * En cas d’échec de communication ou d'erreur de lecture, la fonction retourne 0.
+ *
+ * @return byte Valeur du tangage (pitch) en degrés signés, ou 0 en cas d’échec.
+ */
 byte getPitch()
 {
   // Begin communication with CMPS12
@@ -237,6 +326,19 @@ byte getPitch()
 
   return _pitch;
 }
+
+
+/**
+ * @brief Lit l’angle de roulis (roll) du capteur CMPS12.
+ *
+ * Cette fonction lit un octet signé représentant l’angle d’inclinaison latérale.
+ * Elle permet d’évaluer le basculement du bateau sur l’axe longitudinal.
+ *
+ * @note Le capteur retourne une valeur entière entre -90° et +90°.
+ * @note En cas d’échec de communication, retourne 0 par défaut.
+ *
+ * @return int8_t Roulis en degrés (entre -90 et +90)
+ */
 
 byte getRoll()
 {
@@ -264,7 +366,19 @@ byte getRoll()
   return _roll ;
 }
 
-
+/**
+ * @brief Lit la valeur brute de l'accélération sur l'axe X depuis le capteur CMPS12.
+ *
+ * Cette fonction interroge le registre de l'accéléromètre X du CMPS12 via I2C,
+ * lit deux octets (MSB + LSB) et les combine pour obtenir une valeur signée 16 bits.
+ *
+ * La valeur retournée est brute (en LSB) et peut être convertie en m/s²
+ * en utilisant l’échelle `_accelScale = 1.0f / 100.f`.
+ *
+ * @note En cas de problème de communication ou de réception incomplète, retourne 0.
+ *
+ * @return int16_t Valeur d'accélération brute sur l’axe X, ou 0 si erreur.
+ */
 int16_t getAcceleroX()
 {
   // Begin communication with CMPS12
@@ -293,6 +407,20 @@ int16_t getAcceleroX()
   return (((int16_t)_byteHigh <<8) + (int16_t)_byteLow);
 }
 
+
+/**
+ * @brief Lit la valeur brute de l'accélération sur l'axe Y depuis le capteur CMPS12.
+ *
+ * Cette fonction interroge le registre de l'accéléromètre Y du CMPS12 via I2C,
+ * lit deux octets (MSB + LSB) et les combine pour obtenir une valeur signée 16 bits.
+ *
+ * La valeur retournée est brute (en LSB) et peut être convertie en m/s²
+ * en utilisant l’échelle `_accelScale = 1.0f / 100.f`.
+ *
+ * @note En cas de problème de communication ou de réception incomplète, retourne 0.
+ *
+ * @return int16_t Valeur d'accélération brute sur l’axe Y, ou 0 si erreur.
+ */
 int16_t getAcceleroY()
 { 
   // Begin communication with CMPS12
@@ -321,6 +449,19 @@ int16_t getAcceleroY()
   return (((int16_t)_byteHigh <<8) + (int16_t)_byteLow);
 }
 
+/**
+ * @brief Lit la valeur brute de l'accélération sur l'axe Z depuis le capteur CMPS12.
+ *
+ * Cette fonction interroge le registre de l'accéléromètre Z du CMPS12 via I2C,
+ * lit deux octets (MSB + LSB) et les combine pour obtenir une valeur signée 16 bits.
+ *
+ * La valeur retournée est brute (en LSB) et peut être convertie en m/s²
+ * en utilisant l’échelle `_accelScale = 1.0f / 100.f`.
+ *
+ * @note En cas de problème de communication ou de réception incomplète, retourne 0.
+ *
+ * @return int16_t Valeur d'accélération brute sur l’axe Z, ou 0 si erreur.
+ */
 int16_t getAcceleroZ()
 {
   // Begin communication with CMPS12
@@ -350,6 +491,21 @@ int16_t getAcceleroZ()
 
 }
 
+/**
+ * @brief Lit la valeur brute du champ magnétique sur l’axe X depuis le capteur CMPS12.
+ *
+ * Cette fonction interroge le registre du magnétomètre X via I2C.
+ * Elle lit deux octets (MSB + LSB), les combine pour produire une valeur
+ * entière signée 16 bits représentant l’intensité du champ magnétique.
+ *
+ * @note La valeur retournée est brute (en LSB) et peut être convertie en µT
+ * si l’échelle est connue (non fournie par défaut par CMPS12).
+ *
+ * @note En cas d’échec de communication ou de réception incomplète, la fonction retourne 0.
+ *
+ * @return int16_t Valeur brute du champ magnétique sur l’axe X, ou 0 si erreur.
+ */
+
 int16_t getMagnetX()
 {
   // Begin communication with CMPS12
@@ -377,6 +533,21 @@ int16_t getMagnetX()
   // Calculate value
   return (((int16_t)_byteHigh <<8) + (int16_t)_byteLow);
 }
+
+/**
+ * @brief Lit la valeur brute du champ magnétique sur l’axe Y depuis le capteur CMPS12.
+ *
+ * Cette fonction interroge le registre du magnétomètre Y via I2C.
+ * Elle lit deux octets (MSB + LSB), les combine pour produire une valeur
+ * entière signée 16 bits représentant l’intensité du champ magnétique.
+ *
+ * @note La valeur retournée est brute (en LSB) et peut être convertie en µT
+ * si l’échelle est connue (non fournie par défaut par CMPS12).
+ *
+ * @note En cas d’échec de communication ou de réception incomplète, la fonction retourne 0.
+ *
+ * @return int16_t Valeur brute du champ magnétique sur l’axe Y, ou 0 si erreur.
+ */
 
 int16_t getMagnetY()
 {
@@ -406,6 +577,21 @@ int16_t getMagnetY()
   return (((int16_t)_byteHigh <<8) + (int16_t)_byteLow);
 }
 
+/**
+ * @brief Lit la valeur brute du champ magnétique sur l’axe Z depuis le capteur CMPS12.
+ *
+ * Cette fonction interroge le registre du magnétomètre Z via I2C.
+ * Elle lit deux octets (MSB + LSB), les combine pour produire une valeur
+ * entière signée 16 bits représentant l’intensité du champ magnétique.
+ *
+ * @note La valeur retournée est brute (en LSB) et peut être convertie en µT
+ * si l’échelle est connue (non fournie par défaut par CMPS12).
+ *
+ * @note En cas d’échec de communication ou de réception incomplète, la fonction retourne 0.
+ *
+ * @return int16_t Valeur brute du champ magnétique sur l’axe Z, ou 0 si erreur.
+ */
+
 int16_t getMagnetZ()
 {
   // Begin communication with CMPS12
@@ -433,6 +619,25 @@ int16_t getMagnetZ()
   // Calculate value
   return (((int16_t)_byteHigh <<8) + (int16_t)_byteLow);
 }
+
+/**
+ * @brief Change l’adresse I2C du capteur CMPS12.
+ *
+ * Cette fonction envoie une séquence spécifique au capteur CMPS12
+ * via le registre de contrôle pour modifier son adresse I2C.
+ * 
+ * ⚠️ **Important** :
+ * - Seul le capteur dont l'adresse doit être changée doit être présent sur le bus I2C.
+ * - La nouvelle adresse doit être une valeur paire (7 bits, se terminant par 0).
+ * - Le changement est **persistant** (sauvegardé en EEPROM sur le capteur).
+ *
+ * @warning Cette opération est irréversible sans outils spécifiques si la nouvelle
+ * adresse est incorrecte. Utiliser avec précaution.
+ *
+ * @param i2cAddress Adresse I2C actuelle du capteur (ex: `0x60`).
+ * @param newi2cAddress Nouvelle adresse I2C souhaitée (ex: `0x64`).
+ * @return void
+ */
 
 void changeAddress(byte i2cAddress, byte newi2cAddress)
 {
@@ -501,6 +706,23 @@ void changeAddress(byte i2cAddress, byte newi2cAddress)
   if(nackCatcher != 0){return;}
 
 }
+
+/**
+ * @brief Vérifie l’état de calibration du capteur CMPS12 et affiche un message explicatif.
+ *
+ * Cette fonction lit le registre de statut de calibration du CMPS12 via I2C
+ * et affiche une description du résultat sur le port série :
+ * - `0xFF` : Calibration complète 
+ * - `0x00` : Calibration absente 
+ * - Autre : Calibration partielle 
+ *
+ * Elle attend 10 secondes (`delay(10000)`) après l'affichage pour laisser
+ * le temps à l’utilisateur de lire le message.
+ *
+ * @note Cette fonction est utile pour l’étape de diagnostic ou de test du capteur.
+ *
+ * @return true si la calibration est complète (`0xFF`), false sinon.
+ */
 
 bool checkCalibrationStatus() {
 
